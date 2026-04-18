@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kursstruktur — Long COVID / Post VAC — V3</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f5f5f7;
+    --card: #ffffff;
+    --text: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --accent: #0071e3;
+    --green: #34c759;
+    --orange: #ff9500;
+    --red: #ff3b30;
+    --purple: #af52de;
+    --teal: #5ac8fa;
+    --indigo: #5856d6;
+    --border: #d2d2d7;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --suggest: #e85d04;
+    --suggest-bg: linear-gradient(135deg, #fff7ed, #ffedd5);
+    --suggest-border: #fdba74;
+    --suggest-text: #9a3412;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #1d1d1f 0%, #2c2c2e 50%, #3a3a3c 100%);
+    color: #fff;
+    padding: 80px 24px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 70%, rgba(0,113,227,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(175,82,222,0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+    color: rgba(255,255,255,0.85);
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .hero p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .stat-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 22px 14px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  .stat-card .number {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat-card .label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .suggest-banner {
+    background: var(--suggest-bg);
+    border: 2px dashed var(--suggest-border);
+    border-radius: var(--radius);
+    padding: 20px 28px;
+    margin-bottom: 48px;
+  }
+  .suggest-banner h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--suggest);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .suggest-banner p {
+    font-size: 13px;
+    color: var(--suggest-text);
+    line-height: 1.6;
+  }
+
+  .legend {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px 28px;
+    margin-bottom: 48px;
+  }
+  .legend h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .legend-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .legend-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+  .legend-dot.video { background: #e8f0fe; color: var(--accent); }
+  .legend-dot.slide { background: #fef3e2; color: var(--orange); }
+  .legend-dot.anim { background: #f0e8fe; color: var(--purple); }
+  .legend-dot.download { background: #e8f8fe; color: var(--teal); }
+  .legend-dot.suggest { background: #ffedd5; color: var(--suggest); }
+
+  .module {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+  .module:hover { box-shadow: var(--shadow-lg); }
+
+  .module-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 28px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .module-header:hover { background: rgba(0,0,0,0.015); }
+
+  .module-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .module-number.start {
+    font-size: 14px;
+    letter-spacing: -0.5px;
+  }
+
+  .module-meta { flex: 1; }
+  .module-meta h3 {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+  }
+  .module-meta .subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  .module-duration {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    background: var(--bg);
+    padding: 4px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  .chevron {
+    width: 20px; height: 20px;
+    color: var(--text-secondary);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+  .module.open .chevron { transform: rotate(180deg); }
+
+  .lessons {
+    display: none;
+    border-top: 1px solid var(--border);
+  }
+  .module.open .lessons { display: block; }
+
+  .lesson {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 28px 16px 92px;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    transition: background 0.2s;
+  }
+  .lesson:last-child { border-bottom: none; }
+  .lesson:hover { background: rgba(0,0,0,0.015); }
+
+  .lesson.vorschlag {
+    background: linear-gradient(90deg, #fff7ed 0%, #ffffff 100%);
+    border-left: 3px solid var(--suggest);
+  }
+  .lesson.vorschlag:hover {
+    background: linear-gradient(90deg, #ffedd5 0%, #fff7ed 100%);
+  }
+
+  .lesson-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    margin-top: 1px;
+  }
+  .lesson-icon.video { background: #e8f0fe; color: var(--accent); }
+  .lesson-icon.slide { background: #fef3e2; color: var(--orange); }
+  .lesson-icon.anim { background: #f0e8fe; color: var(--purple); }
+  .lesson-icon.download { background: #e8f8fe; color: var(--teal); }
+  .lesson-icon.suggest { background: #ffedd5; color: var(--suggest); }
+  .lesson-icon.social { background: #e2fbe8; color: var(--green); }
+
+  .lesson-info { flex: 1; }
+  .lesson-info .title { font-size: 15px; font-weight: 500; }
+  .lesson-info .desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+    line-height: 1.5;
+  }
+
+  .lesson-time {
+    font-size: 12px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    margin-top: 3px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .tag.animation { background: #f0e8fe; color: #7c3aed; }
+  .tag.folie { background: #fef3e2; color: #c2710c; }
+  .tag.wichtig { background: #fee2e2; color: #dc2626; }
+  .tag.labor { background: #e2fbe8; color: #16a34a; }
+  .tag.therapie { background: #e8f0fe; color: #2563eb; }
+  .tag.vorschlag { background: #ffedd5; color: var(--suggest); }
+  .tag.pdf { background: #e8f8fe; color: #0284c7; }
+  .tag.neu { background: #dbeafe; color: #1d4ed8; }
+
+  .note-card {
+    background: linear-gradient(135deg, #fefce8, #fef9c3);
+    border: 1px solid #fde68a;
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin: 12px 28px 20px 92px;
+    font-size: 13px;
+    color: #92400e;
+    line-height: 1.5;
+  }
+  .note-card strong { font-weight: 600; }
+
+  .cta-card {
+    background: var(--suggest-bg);
+    border: 2px dashed var(--suggest-border);
+    border-radius: var(--radius-sm);
+    padding: 18px 22px;
+    margin: 12px 28px 20px 92px;
+    font-size: 13px;
+    color: var(--suggest-text);
+    line-height: 1.6;
+    position: relative;
+  }
+  .cta-card.full-width {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .cta-card::before {
+    content: 'VORSCHLAG SCHMIDTKE';
+    position: absolute;
+    top: -10px; left: 16px;
+    background: var(--suggest);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+  .cta-card strong { font-weight: 600; color: var(--suggest); }
+  .cta-card .cta-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--suggest);
+    margin-bottom: 6px;
+  }
+
+  .outro-cta {
+    background: linear-gradient(135deg, #1d1d1f, #3a3a3c);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    margin-top: 40px;
+    margin-bottom: 24px;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 2px dashed var(--suggest-border);
+  }
+  .outro-cta::before {
+    content: 'VORSCHLAG SCHMIDTKE';
+    position: absolute;
+    top: 12px; right: 16px;
+    background: var(--suggest);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+  .outro-cta h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+  .outro-cta p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 600px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+  }
+  .outro-cta .cta-btn {
+    display: inline-block;
+    background: var(--suggest);
+    color: #fff;
+    padding: 12px 32px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .outro-cta .cta-btn:hover { opacity: 0.85; }
+
+  /* Section divider */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 48px 0 24px;
+  }
+  .section-divider .line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-divider .label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 32px 24px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+  }
+
+  @media (max-width: 640px) {
+    .lesson { padding-left: 28px; }
+    .note-card, .cta-card { margin-left: 28px; }
+    .module-duration { display: none; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">ONLINE KURS — ENTWURF V3</div>
+  <h1>Long COVID / Post VAC</h1>
+  <p>Integrative Medizin mit Benjamin Börner — Fundament für Betroffene aller Schweregrade</p>
+</div>
+
+<div class="container">
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="number">7</div>
+      <div class="label">Module</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">30+</div>
+      <div class="label">Video-Lektionen</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">~6–8 h</div>
+      <div class="label">Gesamtdauer</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">5+</div>
+      <div class="label">Animationen</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">10+</div>
+      <div class="label">PDFs & Downloads</div>
+    </div>
+  </div>
+
+  <!-- Vorschlag-Banner -->
+  <div class="suggest-banner">
+    <h3><span style="font-size:18px;">&#9670;</span> Lesehinweis: Vorschläge von Schmidtke</h3>
+    <p>Alle Elemente mit <strong style="color:var(--suggest);">orangem Rand</strong> und dem Label <strong style="color:var(--suggest);">VORSCHLAG SCHMIDTKE</strong> sind unsere Ergänzungsvorschläge — bewährte Kursstruktur-Elemente, Download-Materialien und verkaufspsychologische Akzente, die den Kurswert steigern und den Übergang zur Vor-Ort-Behandlung schaffen. Benjamins Fachinhalte bleiben unverändert.</p>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <h3>Legende — Inhaltstypen</h3>
+    <div class="legend-grid">
+      <div class="legend-item"><div class="legend-dot video">▶</div> Video-Lektion</div>
+      <div class="legend-item"><div class="legend-dot slide">◼</div> Folie / Grafik</div>
+      <div class="legend-item"><div class="legend-dot anim">✦</div> Animation</div>
+      <div class="legend-item"><div class="legend-dot download">↓</div> Download / PDF</div>
+      <div class="legend-item"><div class="legend-dot suggest">&#9670;</div> <strong>Vorschlag Schmidtke</strong></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- STARTE HIER                             -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="module open" onclick="this.classList.toggle('open')">
+    <div class="module-header">
+      <div class="module-number start" style="background: linear-gradient(135deg, #0071e3, #40a0ff);">Start</div>
+      <div class="module-meta">
+        <h3>Starte hier</h3>
+        <div class="subtitle">Willkommen, Orientierung & was du in diesem Kurs bekommst</div>
+      </div>
+      <div class="module-duration">~20–25 min</div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="lessons">
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Willkommen im Kurs</div>
+          <div class="desc">Persönliche Begrüßung durch Benjamin Börner. Wer ist er und warum hat er diesen Kurs gemacht?</div>
+        </div>
+        <div class="lesson-time">~2 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Das lernst du in diesem Kurs</div>
+          <div class="desc">Kompakter Überblick: Welche Module gibt es, was erwartet dich, und was wirst du nach dem Kurs verstanden haben?</div>
+        </div>
+        <div class="lesson-time">~2 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Für wen ist dieser Kurs?</div>
+          <div class="desc">Von sehr leichten bis sehr schweren Beschwerden — warum dieser Kurs für alle Betroffenen das Fundament bildet.</div>
+          <span class="tag wichtig">Wichtiger Hinweis</span>
+        </div>
+        <div class="lesson-time">~2 min</div>
+      </div>
+
+      <div class="note-card">
+        <strong>Hinweis für Teilnehmer:</strong> Aufgrund der Erfahrung mit vielen hunderten Long COVID / Post VAC Patienten gibt es eine klare Kategorisierung, wann zwingend Diagnostik vor Therapie stattfinden muss. Dieser Kurs schafft zuerst das notwendige Verständnis.
+      </div>
+
+      <!-- Vorschlag: Wer ist Börner Lebenswerk -->
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">Wer ist Börner Lebenswerk?</div>
+          <div class="desc">Kurzvorstellung des Zentrums für Integrative Medizin in Tübingen. Was macht das Team, seit wann, wie viele Patienten betreut? Positioniert den Kurs als Wissensgrundlage — und das Zentrum als nächsten Schritt für individuelle Betreuung. Schafft von Anfang an Vertrauen und Autorität.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span>
+        </div>
+        <div class="lesson-time">~3–5 min</div>
+      </div>
+
+      <!-- Vorschlag: Wichtig-Abgrenzung -->
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">Wichtig: Das ist kein Ersatz für ärztliche Diagnostik!</div>
+          <div class="desc">Klare Abgrenzung: Der Kurs schafft Verständnis — bei mittleren bis schweren Verläufen ist professionelle Diagnostik zwingend notwendig. Setzt Erwartungen richtig und schützt rechtlich.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span>
+        </div>
+        <div class="lesson-time">~1 min</div>
+      </div>
+
+      <!-- Vorschlag: Was du alles bekommst -->
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">Was du in diesem Kurs alles bekommst</div>
+          <div class="desc">Übersicht aller enthaltenen Materialien — Videos, Animationen, PDFs, Workbook, Protokolle, Einnahmeplan, Tracker. Der Teilnehmer sieht sofort den vollen Umfang dessen, was er bekommt. Steigert den wahrgenommenen Wert des Kurses erheblich.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span>
+        </div>
+        <div class="lesson-time">~2 min</div>
+      </div>
+
+      <!-- Vorschlag: Erfolgsgeschichten -->
+      <div class="lesson vorschlag">
+        <div class="lesson-icon social">&#9733;</div>
+        <div class="lesson-info">
+          <div class="title">Erfolgsgeschichten: Patienten berichten</div>
+          <div class="desc">2–3 kurze Patientenberichte (anonymisiert oder mit Einverständnis), die zeigen: Der Ansatz funktioniert. Entweder als Video-Testimonials oder als Vorher/Nachher-Darstellung. Gibt neuen Teilnehmern Zuversicht und stärkt die Glaubwürdigkeit.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span>
+        </div>
+        <div class="lesson-time">~3 min</div>
+      </div>
+
+      <!-- Vorschlag: Updates -->
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">So erhältst du alle Updates</div>
+          <div class="desc">Kurzer Hinweis: Der Kurs wird regelmäßig aktualisiert, wenn neue Erkenntnisse vorliegen. Wie wird man über neue Inhalte informiert? Schafft Vertrauen, dass der Kurs lebendig bleibt und der Teilnehmer langfristig profitiert.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span>
+        </div>
+        <div class="lesson-time">~1 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">So geht es jetzt weiter</div>
+          <div class="desc">Kurze Überleitung zum ersten Fachmodul. Empfohlene Reihenfolge und begleitende Materialien.</div>
+        </div>
+        <div class="lesson-time">~1 min</div>
+      </div>
+
+      <!-- Vorschlag: Downloads Modul 1 -->
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Selbsteinschätzungs-Fragebogen</div>
+          <div class="desc">Fragebogen zur Einordnung auf der Schweregrad-Skala (sehr leicht bis sehr schwer). Hilft bei der Orientierung im Kurs und bei späteren Arztgesprächen.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Kurs-Workbook / Begleitheft</div>
+          <div class="desc">Begleitendes Workbook mit Platz für Notizen zu jedem Modul, Reflexionsfragen und Fortschritts-Checkliste. Zum Ausdrucken — gibt dem Kurs einen greifbaren Wert.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Trennlinie -->
+  <div class="section-divider">
+    <div class="line"></div>
+    <div class="label">Fachmodule</div>
+    <div class="line"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MODUL 2 — Wo stehen wir / Leitlinie    -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="module" onclick="this.classList.toggle('open')">
+    <div class="module-header">
+      <div class="module-number" style="background: linear-gradient(135deg, #ff9500, #ffb340);">1</div>
+      <div class="module-meta">
+        <h3>Standortbestimmung & Leitlinien-Medizin</h3>
+        <div class="subtitle">Wo stehen wir seit 2020, S3-Leitlinie & warum die meisten Zentren versagen</div>
+      </div>
+      <div class="module-duration">~45–60 min</div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="lessons">
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Wo stehen wir seit 2020?</div>
+          <div class="desc">Rückblick auf die Pandemie und die aktuelle Lage. Was hat sich verändert, was wissen wir heute?</div>
+        </div>
+        <div class="lesson-time">~8–12 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Die S3-Leitlinie und ihre Grenzen</div>
+          <div class="desc">Was sagt die offizielle Leitlinie? Wo fehlt fundamentales biochemisches Verständnis zu SARS-CoV-2, Impfnebenwirkungen und Spikopathie?</div>
+        </div>
+        <div class="lesson-time">~10–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Akutmedizin vs. chronische Erkrankungen</div>
+          <div class="desc">Wann dient die Leitlinien-Medizin und wann braucht es eine erweiterte, integrative Herangehensweise?</div>
+        </div>
+        <div class="lesson-time">~8–12 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon anim">✦</div>
+        <div class="lesson-info">
+          <div class="title">Animation: Das Autobahnbeispiel</div>
+          <div class="desc">Visuelle Erklärung, warum Standardmedizin bei chronischen Verläufen an ihre Grenzen stößt.</div>
+          <span class="tag animation">Vorhandene Animation</span>
+        </div>
+        <div class="lesson-time">~3–5 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Augenwischerei der KV — Was zahlt die Kasse wirklich?</div>
+          <div class="desc">Kassenleistungen vs. tatsächlich notwendige Diagnostik. Was Patienten wissen müssen.</div>
+        </div>
+        <div class="lesson-time">~8–12 min</div>
+      </div>
+
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Checkliste „Fragen an deinen Arzt"</div>
+          <div class="desc">Druckbare Checkliste mit den richtigen Fragen für den nächsten Arztbesuch. Hilft, den eigenen Arzt einzuordnen und das Gespräch zu lenken.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Kassenleistungen vs. Notwendige Diagnostik</div>
+          <div class="desc">Tabellarische Gegenüberstellung: Was zahlt die Kasse, was nicht, warum trotzdem notwendig. Inklusive Tipps zur Kostenübernahme.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MODUL 3 — Krankheitsentstehung          -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="module" onclick="this.classList.toggle('open')">
+    <div class="module-header">
+      <div class="module-number" style="background: linear-gradient(135deg, #34c759, #5dd87b);">2</div>
+      <div class="module-meta">
+        <h3>Wie Krankheit entsteht</h3>
+        <div class="subtitle">Homöostase, Eisbergmodell & der Tipping Point</div>
+      </div>
+      <div class="module-duration">~40–50 min</div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="lessons">
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Die homöostatische Kurve</div>
+          <div class="desc">Wie der Körper Balance hält — und wann er aus dem Gleichgewicht kippt.</div>
+          <span class="tag folie">Folie: Homöostatische Kurve</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon anim">✦</div>
+        <div class="lesson-info">
+          <div class="title">Animation: Das Eisbergmodell (1/7 — 6/7)</div>
+          <div class="desc">Was wir sehen (Symptome) vs. was unter der Oberfläche liegt.</div>
+          <span class="tag animation">Vorhandene Animation</span>
+        </div>
+        <div class="lesson-time">~5–8 min</div>
+      </div>
+
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Mein persönlicher Eisberg — Worksheet</div>
+          <div class="desc">Arbeitsblatt: Sichtbare Symptome oben, vermutete Ursachen unten eintragen. Wertvolles Dokument für Arztgespräche.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Der Tipping Point — Eine historische Einordnung</div>
+          <div class="desc">Zum ersten Mal in der Medizingeschichte: Was ist bei welchem Verlauf zu erwarten? Warum gibt es keine Spontanheilung?</div>
+          <span class="tag wichtig">Kernkonzept</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Was bedeutet das für Dauer & Nachhaltigkeit?</div>
+          <div class="desc">Realistische Erwartungshaltung: Warum es keinen schnellen Fix gibt.</div>
+        </div>
+        <div class="lesson-time">~8–10 min</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MODUL 4 — Einflussfaktoren              -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="module" onclick="this.classList.toggle('open')">
+    <div class="module-header">
+      <div class="module-number" style="background: linear-gradient(135deg, #af52de, #c77deb);">3</div>
+      <div class="module-meta">
+        <h3>Die großen Einflussfaktoren</h3>
+        <div class="subtitle">Störfelder, die chronische Erkrankungen aufrechterhalten</div>
+      </div>
+      <div class="module-duration">~60–90 min</div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="lessons">
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Überblick: Die großen 3 + weitere Einflussfaktoren</div>
+          <div class="desc">Warum es nicht „den einen Auslöser" gibt — und welche Faktoren zusammenspielen.</div>
+        </div>
+        <div class="lesson-time">~5–8 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Glyphosat, Schwermetalle & Umweltgifte</div>
+          <div class="desc">Wie Umweltgifte die biochemischen Prozesse stören und die Entgiftungskapazität überfordern.</div>
+        </div>
+        <div class="lesson-time">~10–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Reaktive chronische Infektionen</div>
+          <div class="desc">Welche latenten Infektionen durch die Immunschwäche reaktiviert werden.</div>
+        </div>
+        <div class="lesson-time">~10–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Die Stressachse — Daueraktivierung des Nervensystems</div>
+          <div class="desc">HPA-Achse, Sympathikus-Dominanz und warum der Körper nicht mehr in den Reparatur-Modus kommt.</div>
+        </div>
+        <div class="lesson-time">~10–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Zähne, Ernährung, Darm & EMF</div>
+          <div class="desc">Zahnherde, Ernährungsfehler, Darmimmunsystem und elektromagnetische Felder.</div>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Medikamente & Kopfgelenksinstabilität</div>
+          <div class="desc">Wie bestimmte Medikamente die Problematik verschärfen und warum die Kopfgelenksinstabilität unterschätzt wird.</div>
+        </div>
+        <div class="lesson-time">~8–10 min</div>
+      </div>
+
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Einflussfaktoren-Check — Persönliche Bestandsaufnahme</div>
+          <div class="desc">Checkliste mit Ampel-System (grün/gelb/rot): Welche Faktoren treffen auf mich zu?</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Sauna- & Entgiftungsprotokoll</div>
+          <div class="desc">Schritt-für-Schritt: Angepasstes Saunieren bei Long COVID / Post VAC. Kontraindikationen, Temperatur-Stufen, Binder, Elektrolyte. Differenziert nach Schweregrad.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Anti-Entzündungs-Ernährungs-Guide</div>
+          <div class="desc">Was meiden, was essen, warum. Wochenplan-Vorlage und Einkaufsliste. Fokus: Darmgesundheit & Glyphosat-arme Lebensmittel.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+      <div class="cta-card">
+        <div class="cta-title">Zwischenhinweis: Individuelle Diagnostik in Tübingen</div>
+        <strong>Verkaufspsychologie:</strong> Teilnehmer wissen jetzt, wie viele Faktoren zusammenspielen. Genau hier den Bogen spannen: <em>„Wenn bei dir mehrere dieser Faktoren zusammenkommen — dann kann eine individuelle Diagnostik in unserem Zentrum in Tübingen den entscheidenden Unterschied machen."</em> Logische Konsequenz, kein harter Verkauf.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MODUL 5 — Spike & Immunsystem           -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="module" onclick="this.classList.toggle('open')">
+    <div class="module-header">
+      <div class="module-number" style="background: linear-gradient(135deg, #ff3b30, #ff6961);">4</div>
+      <div class="module-meta">
+        <h3>COVID, Spike-Protein & Immunsystem</h3>
+        <div class="subtitle">Genetik vs. Epigenetik, Spike-Mechanismen & immunologische Szenerie</div>
+      </div>
+      <div class="module-duration">~80–100 min</div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="lessons">
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Genetik vs. Epigenetik</div>
+          <div class="desc">Was ist vorgegeben, was wird durch Umwelt aktiviert? Warum manche stärker betroffen sind.</div>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Infektion vs. Transfektion (Impfung)</div>
+          <div class="desc">Was passiert bei natürlicher Infektion vs. Impfung? Warum Impfung plus Infektion am problematischsten ist.</div>
+          <span class="tag wichtig">Schlüssellektion</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon slide">◼</div>
+        <div class="lesson-info">
+          <div class="title">Spike-Bildung, Persistenz & Nachbau</div>
+          <div class="desc">Folienserie: Wie entsteht das Spike-Protein, warum persistiert es, warum baut der Körper es nach?</div>
+          <span class="tag folie">Mehrere Folien</span>
+        </div>
+        <div class="lesson-time">~15–20 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Spike & Cell Danger Response</div>
+          <div class="desc">Wie das Spike-Protein die zelluläre Gefahrenreaktion triggert.</div>
+        </div>
+        <div class="lesson-time">~10–12 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Immunkompetenz-Verlust — Intrazellulär vs. Humoral</div>
+          <div class="desc">Abfallende intrazelluläre Immunität, autoaggressive humorale Immunität — die immunologische Szenerie.</div>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Symptomkatalog: Was kommt woher?</div>
+          <div class="desc">Klare Zuordnung: Symptome durch Spike-Produktion, durch Impfung, durch Impfung + Infektion.</div>
+        </div>
+        <div class="lesson-time">~10–12 min</div>
+      </div>
+
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Symptom-Zuordnungs-Karte & 4-Wochen-Tracker</div>
+          <div class="desc">Übersichtskarte welche Symptome woher kommen + täglicher Tracker zum Ausfüllen. Zeigt Muster und ist Grundlage für jedes Arztgespräch.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MODUL 6 — Labor & Therapie              -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="module" onclick="this.classList.toggle('open')">
+    <div class="module-header">
+      <div class="module-number" style="background: linear-gradient(135deg, #5856d6, #7a79e8);">5</div>
+      <div class="module-meta">
+        <h3>Labordiagnostik & Therapie</h3>
+        <div class="subtitle">Wichtige Laborwerte, Therapieansätze & Einnahmeplan</div>
+      </div>
+      <div class="module-duration">~60–90 min</div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="lessons">
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Die wichtigsten Laborwerte im Überblick</div>
+          <div class="desc">Welche Marker wirklich aussagekräftig sind — und welche oft übersehen werden.</div>
+          <span class="tag labor">Laborwerte</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Laborwerte richtig lesen & interpretieren</div>
+          <div class="desc">Die immunologische Szenerie anhand konkreter Laborbeispiele verstehen.</div>
+          <span class="tag labor">Laborwerte</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Laborwerte-Referenzkarte zum Mitnehmen</div>
+          <div class="desc">DIN A4 Vorder-/Rückseite: Alle relevanten Werte, Referenzbereiche, kurze Erklärung. Zum Arzt oder Labor mitnehmen.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Welche Laborwerte sind wichtig? — Zusammenfassung</div>
+          <div class="desc">Kompakte Zusammenfassung: Die Must-Have-Werte auf einen Blick.</div>
+        </div>
+        <div class="lesson-time">~5–8 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Therapie: Welche Therapie — wann und wieso?</div>
+          <div class="desc">Systematischer Überblick über Therapiebausteine. Reihenfolge, Priorisierung, Timing.</div>
+          <span class="tag therapie">Therapie</span>
+        </div>
+        <div class="lesson-time">~15–20 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon download">↓</div>
+        <div class="lesson-info">
+          <div class="title">Einnahmeplan — Download & Erklärung</div>
+          <div class="desc">Konkreter Einnahmeplan als PDF, begleitet von Erklär-Video zu Dosierung, Timing und häufigen Fehlern.</div>
+          <span class="tag therapie">Therapie</span>
+        </div>
+        <div class="lesson-time">~10–12 min</div>
+      </div>
+
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Therapie-Fahrplan — Dein 90-Tage-Plan</div>
+          <div class="desc">Strukturierter Fahrplan für die ersten 90 Tage nach Kursabschluss. Woche für Woche: Was starten, beobachten, anpassen.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Supplement-Qualitäts-Guide</div>
+          <div class="desc">Worauf bei Nahrungsergänzungsmitteln achten? Bioverfügbarkeit, Zusatzstoffe, empfohlene Bezugsquellen.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Trennlinie -->
+  <div class="section-divider">
+    <div class="line"></div>
+    <div class="label">Abschluss</div>
+    <div class="line"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MODUL 7 — Abschluss & Nächste Schritte -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="module" onclick="this.classList.toggle('open')">
+    <div class="module-header">
+      <div class="module-number start" style="background: linear-gradient(135deg, #1d1d1f, #48484a);">Ende</div>
+      <div class="module-meta">
+        <h3>Abschluss & Deine nächsten Schritte</h3>
+        <div class="subtitle">Zusammenfassung, persönliche Begleitung & wie es weitergeht</div>
+      </div>
+      <div class="module-duration">~10–15 min</div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="lessons">
+
+      <!-- Vorschlag: Zusammenfassung -->
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">Was du jetzt weißt — Zusammenfassung</div>
+          <div class="desc">Kompakter Rückblick auf die wichtigsten Erkenntnisse aus allen Modulen. Gibt dem Teilnehmer das Gefühl: „Ich habe jetzt wirklich etwas Wertvolles gelernt und verstanden."</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span>
+        </div>
+        <div class="lesson-time">~3–5 min</div>
+      </div>
+
+      <!-- Vorschlag: Outro mit CTA -->
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">Persönliches Schlusswort von Benjamin</div>
+          <div class="desc"><strong>Verkaufspsychologie (3 Schritte):</strong><br>
+          1. <em>Wertschätzung:</em> „Du hast dir die Zeit genommen, dich wirklich auseinanderzusetzen."<br>
+          2. <em>Ermächtigung:</em> „Du bist kein hilfloser Patient mehr — du hast jetzt das Wissen."<br>
+          3. <em>Brücke:</em> „Wer persönliche Begleitung braucht — mein Team und ich sind in Tübingen für dich da."</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span>
+        </div>
+        <div class="lesson-time">~3–5 min</div>
+      </div>
+
+      <!-- Vorschlag: So geht es weiter -->
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">So geht es jetzt für dich weiter</div>
+          <div class="desc">Konkrete nächste Schritte: 1) Workbook durchgehen, 2) Laborwerte checken lassen, 3) Einnahmeplan starten, 4) Bei Bedarf Termin in Tübingen anfragen. Klare Handlungsanleitung, damit der Teilnehmer nicht ratlos zurückbleibt.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span>
+        </div>
+        <div class="lesson-time">~1–2 min</div>
+      </div>
+
+      <!-- Vorschlag: Bonus-Materialien Übersicht -->
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Alle Downloads auf einen Blick</div>
+          <div class="desc">Sammelseite mit Links zu allen PDFs, Protokollen und Trackern aus dem gesamten Kurs. Damit Teilnehmer nicht in den Modulen suchen müssen.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- OUTRO CTA — Börner Lebenswerk           -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="outro-cta">
+    <h3>Du brauchst persönliche Begleitung?</h3>
+    <p>Du hast jetzt das Wissen — aber jeder Mensch ist anders. Wenn du merkst, dass deine Situation eine individuelle Diagnostik und Therapie erfordert, ist das Börner Lebenswerk in Tübingen für dich da. Benjamin und sein Team betreuen Betroffene seit über 6 Jahren.</p>
+    <a href="#" class="cta-btn">Termin im Börner Lebenswerk anfragen</a>
+    <p style="margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.5);">Zentrum für Integrative Medizin · Tübingen</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>Kursstruktur-Entwurf V3 — Börner Lebenswerk × Schmidtke GmbH</p>
+    <p style="margin-top: 4px; font-size: 12px; color: #86868b;">Stand: April 2026 · Zeitangaben sind Richtwerte und werden nach Aufnahme finalisiert · Orange = Vorschläge Schmidtke</p>
+  </div>
+
+</div>
+
+</body>
+</html>
