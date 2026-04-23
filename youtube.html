@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Longform Video-Ideen — Börner Lebenswerk</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f5f5f5;
+    --card: #ffffff;
+    --text: #2e2e2e;
+    --text-body: #33393C;
+    --text-secondary: #6b7280;
+    --gold: #cdaf70;
+    --gold-dark: #B79D68;
+    --gold-light: #f5edd8;
+    --gold-lighter: #faf6ed;
+    --border: #C2C3CC;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+    --radius: 14px;
+    --radius-sm: 10px;
+    --suggest: #e85d04;
+    --suggest-bg: linear-gradient(135deg, #fff7ed, #ffedd5);
+    --suggest-border: #fdba74;
+    --suggest-text: #9a3412;
+    --green: #166534;
+    --green-bg: #dcfce7;
+    --red: #991b1b;
+    --red-bg: #fee2e2;
+    --blue: #1e40af;
+    --blue-bg: #dbeafe;
+  }
+
+  body {
+    font-family: 'Barlow Semi Condensed', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .header-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .header p {
+    font-size: 17px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 48px;
+  }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--gold-light);
+  }
+  .section-title .icon {
+    width: 36px;
+    height: 36px;
+    background: var(--gold-light);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  /* TABLE */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+  .data-table th {
+    background: var(--gold-lighter);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 2px solid var(--gold-light);
+  }
+  .data-table td {
+    padding: 12px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: var(--gold-lighter); }
+
+  /* VIDEO IDEA CARDS */
+  .idea-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .idea-card.suggest-marker {
+    margin-top: 18px;
+  }
+  .idea-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+  .idea-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .idea-number {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .idea-title-wrap { flex: 1; }
+  .idea-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .idea-meta {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+  }
+  .tag.potential { background: var(--green-bg); color: var(--green); }
+  .tag.thema { background: var(--blue-bg); color: var(--blue); }
+  .tag.format { background: var(--gold-light); color: var(--gold-dark); }
+  .tag.prio-hoch { background: #fef3e2; color: #92400e; }
+  .tag.prio-mega { background: #fee2e2; color: #991b1b; }
+  .tag.neu { background: #f0e6ff; color: #5b21b6; }
+
+  .idea-toggle {
+    font-size: 20px;
+    color: var(--text-secondary);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .idea-card.open .idea-toggle { transform: rotate(180deg); }
+
+  .idea-body {
+    display: none;
+    padding: 0 24px 24px;
+    border-top: 1px solid #f0f0f0;
+  }
+  .idea-card.open .idea-body { display: block; }
+
+  .idea-section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold-dark);
+    margin-top: 16px;
+    margin-bottom: 6px;
+  }
+  .idea-body p, .idea-body li {
+    font-size: 14px;
+    color: var(--text-body);
+    line-height: 1.65;
+  }
+  .idea-body ul {
+    margin-left: 18px;
+    margin-bottom: 8px;
+  }
+  .idea-body li { margin-bottom: 4px; }
+
+  .hook-box {
+    background: var(--gold-lighter);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin-top: 8px;
+    border-left: 3px solid var(--gold);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .thumbnail-concept {
+    background: #f8fafc;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  /* SUGGEST MARKER */
+  .suggest-marker {
+    border: 2px dashed var(--suggest-border);
+    background: var(--suggest-bg);
+    position: relative;
+    border-left: 4px solid var(--suggest);
+  }
+  .suggest-marker::before {
+    content: 'VORSCHLAG SCHMIDTKE';
+    position: absolute;
+    top: -11px;
+    left: 16px;
+    background: var(--suggest);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    padding: 2px 10px;
+    border-radius: 4px;
+    z-index: 1;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 12px;
+  }
+
+  @media (max-width: 700px) {
+    .header h1 { font-size: 28px; }
+    .idea-header { padding: 16px; gap: 12px; }
+    .idea-number { width: 36px; height: 36px; font-size: 15px; }
+    .idea-title { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-badge">YouTube Longform Strategie</div>
+    <h1>Video-Ideen &mdash; B&ouml;rner Lebenswerk</h1>
+    <p>12 Vorschl&auml;ge f&uuml;r Longform-Videos, basierend auf der Kanalanalyse und Marktrecherche</p>
+    <p style="font-size:13px; color:var(--text-secondary); margin-top:8px;">Stand: 23. April 2026</p>
+  </div>
+
+  <!-- VIDEO-IDEEN -->
+  <div class="section">
+    <div class="section-title"><span class="icon">&#127909;</span> 12 Video-Ideen</div>
+    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">Klicke auf eine Idee, um Details, Hook-Vorschlag und Thumbnail-Konzept zu sehen.</p>
+
+    <!-- IDEA 1 -->
+    <div class="idea-card suggest-marker" onclick="this.classList.toggle('open')">
+      <div class="idea-header">
+        <div class="idea-number">1</div>
+        <div class="idea-title-wrap">
+          <div class="idea-title">HISTAMIN-EXPLOSION: Warum dein K&ouml;rper &uuml;berreagiert!</div>
+          <div class="idea-meta">
+            <span class="tag prio-mega">&#128293; Top-Priorit&auml;t</span>
+            <span class="tag thema">Allergie / Histamin</span>
+            <span class="tag potential">&#128200; 100K+ Potenzial</span>
+          </div>
+        </div>
+        <div class="idea-toggle">&#9660;</div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-section-label">Warum dieses Video?</div>
+        <p>Allergie/Histamin hat den h&ouml;chsten Durchschnitt aller Kategorien auf dem Kanal, aber nur 3 Videos. Jedes neue Video in dieser Kategorie hat Mega-Potenzial. Das Thema Histaminintoleranz w&auml;chst massiv &mdash; besonders bei Post-Vac-Betroffenen ist Mastzellaktivierung ein riesiges Thema.</p>
+
+        <div class="idea-section-label">Hook-Vorschlag (erste 20 Sek.)</div>
+        <div class="hook-box">
+          &bdquo;Du denkst, deine Allergie kommt von Pollen? Falsch. In Wahrheit reagiert dein K&ouml;rper auf etwas ganz anderes &mdash; und die meisten &Auml;rzte &uuml;bersehen genau das. Heute zeige ich dir, warum dein Histamin-Fass &uuml;berl&auml;uft und was du dagegen tun kannst.&ldquo;
+        </div>
+
+        <div class="idea-section-label">Inhaltliche Eckpunkte</div>
+        <ul>
+          <li>Histamin-Fass-Modell: Warum es pl&ouml;tzlich &uuml;berl&auml;uft</li>
+          <li>Mastzellaktivierung nach Spike-Protein &mdash; die Verbindung</li>
+          <li>Darm als Hauptquelle: Histamin-produzierende Bakterien</li>
+          <li>3 Sofort-Ma&szlig;nahmen f&uuml;r Betroffene</li>
+          <li>Laborwerte, die man checken sollte (DAO, Histamin im Stuhl)</li>
+        </ul>
+
+        <div class="idea-section-label">Thumbnail-Konzept</div>
+        <div class="thumbnail-concept">Benjamin mit aufgerissenen Augen &middot; Rote Hautflecken/Allergiesymptome im Hintergrund &middot; Gro&szlig;er Text: &bdquo;HISTAMIN&ldquo; in Rot &middot; Fragezeichen-Grafik</div>
+      </div>
+    </div>
+
+    <!-- IDEA 2 -->
+    <div class="idea-card suggest-marker" onclick="this.classList.toggle('open')">
+      <div class="idea-header">
+        <div class="idea-number">2</div>
+        <div class="idea-title-wrap">
+          <div class="idea-title">Dein DARM steuert dein Gehirn &mdash; Die Achse, die &Auml;rzte ignorieren!</div>
+          <div class="idea-meta">
+            <span class="tag prio-mega">&#128293; Top-Priorit&auml;t</span>
+            <span class="tag thema">Darm-Hirn-Achse</span>
+            <span class="tag potential">&#128200; 80K+ Potenzial</span>
+          </div>
+        </div>
+        <div class="idea-toggle">&#9660;</div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-section-label">Warum dieses Video?</div>
+        <p>Darm-Videos laufen auf dem Kanal konstant stark. Brain Fog ist DAS Symptom Nr. 1 bei Long COVID &mdash; die Verbindung Darm &rarr; Gehirn ist perfekt f&uuml;r die Zielgruppe und zieht gleichzeitig neues Publikum an.</p>
+
+        <div class="idea-section-label">Hook-Vorschlag</div>
+        <div class="hook-box">
+          &bdquo;Wenn du seit Monaten unter Brain Fog leidest und kein Arzt dir helfen konnte: Das Problem sitzt wahrscheinlich nicht in deinem Kopf &mdash; sondern 1,5 Meter tiefer. Dein Darm schickt gerade Signale an dein Gehirn, die alles durcheinanderbringen. Und ich zeige dir heute genau, wie das funktioniert.&ldquo;
+        </div>
+
+        <div class="idea-section-label">Inhaltliche Eckpunkte</div>
+        <ul>
+          <li>Vagusnerv als &bdquo;Datenautobahn&ldquo; zwischen Darm und Gehirn</li>
+          <li>Leaky Gut &rarr; Entz&uuml;ndungsmediatoren &rarr; Blut-Hirn-Schranke</li>
+          <li>Spike-Protein sch&auml;digt Darmschleimhaut: der mechanische Ablauf</li>
+          <li>Mikrobiom-Analyse: Was die Stuhlprobe wirklich zeigt</li>
+          <li>Therapeutischer Stufenplan (Ern&auml;hrung &rarr; Probiotika &rarr; gezielte Therapie)</li>
+        </ul>
+
+        <div class="idea-section-label">Thumbnail-Konzept</div>
+        <div class="thumbnail-concept">Split-Bild: Darm links, Gehirn rechts &middot; Verbindungslinie/Pfeil dazwischen &middot; Benjamin zeigt erstaunt auf die Verbindung &middot; Text: &bdquo;DARM = GEHIRN?&ldquo;</div>
+      </div>
+    </div>
+
+    <!-- IDEA 3 -->
+    <div class="idea-card suggest-marker" onclick="this.classList.toggle('open')">
+      <div class="idea-header">
+        <div class="idea-number">3</div>
+        <div class="idea-title-wrap">
+          <div class="idea-title">SPIKE-DETOX: Was wirklich hilft &mdash; und was Geldverschwendung ist!</div>
+          <div class="idea-meta">
+            <span class="tag prio-mega">&#128293; Top-Priorit&auml;t</span>
+            <span class="tag thema">Spike / Therapie</span>
+            <span class="tag potential">&#128200; 150K+ Potenzial</span>
+          </div>
+        </div>
+        <div class="idea-toggle">&#9660;</div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-section-label">Warum dieses Video?</div>
+        <p>Spike-Themen dominieren den Kanal. Aber: Alle bisherigen Videos sind problem-fokussiert. Es fehlt ein definitives &bdquo;L&ouml;sungs-Video&ldquo;. Die Nachfrage nach &bdquo;Spike Protein Detox&ldquo; ist auf Allzeithoch. Dieses Video schlie&szlig;t die L&uuml;cke und positioniert Benjamin als den Arzt mit den Antworten.</p>
+
+        <div class="idea-section-label">Hook-Vorschlag</div>
+        <div class="hook-box">
+          &bdquo;Nattokinase, Bromelain, Kurkuma &mdash; im Internet kursieren hunderte Tipps, wie du das Spike-Protein loswerden sollst. Aber: Das meiste davon ist Unsinn. Ich habe hunderte Patienten behandelt und heute zeige ich dir, was wirklich nachweisbar funktioniert &mdash; und was reine Geldverschwendung ist.&ldquo;
+        </div>
+
+        <div class="idea-section-label">Inhaltliche Eckpunkte</div>
+        <ul>
+          <li>Warum &bdquo;Entgiftung&ldquo; der falsche Begriff ist &mdash; was wirklich passiert</li>
+          <li>Evidenz-Check: Nattokinase, Bromelain, NAC, Ivermectin, Glutathion</li>
+          <li>Was Benjamins Patienten tats&auml;chlich hilft (Ergebnisse aus der Praxis)</li>
+          <li>Die richtige Reihenfolge: Erst Diagnostik, dann Therapie</li>
+          <li>Warnzeichen: Wann Selbstbehandlung gef&auml;hrlich wird</li>
+        </ul>
+
+        <div class="idea-section-label">Thumbnail-Konzept</div>
+        <div class="thumbnail-concept">Zwei Seiten: Links Nahrungserg&auml;nzungsmittel-Flaschen mit rotem X &middot; Rechts Benjamin mit gr&uuml;nem Haken &middot; Gro&szlig;: &bdquo;FAKE vs. ECHT&ldquo; &middot; Kontrastfarben rot/gr&uuml;n</div>
+      </div>
+    </div>
+
+    <!-- IDEA 4 -->
+    <div class="idea-card suggest-marker" onclick="this.classList.toggle('open')">
+      <div class="idea-header">
+        <div class="idea-number">4</div>
+        <div class="idea-title-wrap">
+          <div class="idea-title">Die 5 Laborwerte, die dein Arzt NIEMALS testet!</div>
+          <div class="idea-meta">
+            <span class="tag prio-hoch">&#9733; Hohe Prio</span>
+            <span class="tag thema">Labordiagnostik</span>
+            <span class="tag potential">&#128200; 100K+ Potenzial</span>
+          </div>
+        </div>
+        <div class="idea-toggle">&#9660;</div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-section-label">Warum dieses Video?</div>
+        <p>Das Blutanalyse-Video ist das drittst&auml;rkste auf dem ganzen Kanal &mdash; und es ist von 2022. Die Nachfrage nach konkreten Laborwert-Infos ist riesig. Ein Update mit Post-Vac-spezifischen Markern ist &uuml;berf&auml;llig.</p>
+
+        <div class="idea-section-label">Hook-Vorschlag</div>
+        <div class="hook-box">
+          &bdquo;Dein Arzt hat dir gesagt: Deine Blutwerte sind alle normal? Ich zeige dir heute 5 Werte, die in keinem Standard-Labor auftauchen &mdash; aber die bei 80% meiner chronisch kranken Patienten katastrophal aussehen. Nr. 3 hat mich selbst schockiert.&ldquo;
+        </div>
+
+        <div class="idea-section-label">Inhaltliche Eckpunkte</div>
+        <ul>
+          <li>Warum das Standard-Blutbild bei chronisch Kranken versagt</li>
+          <li>5 Werte: z.B. hs-CRP, Zonulin, Anti-Spike-Antik&ouml;rper, DAO-Wert, Neurotransmitter-Profil</li>
+          <li>Jeder Wert: Was er zeigt, Normalbereich vs. optimal, was bei Auff&auml;lligkeit zu tun ist</li>
+          <li>Wie man diese Tests beim Hausarzt einfordert (oder selbst bezahlt)</li>
+          <li>Echte Laborberichte (anonymisiert) als Beispiel</li>
+        </ul>
+
+        <div class="idea-section-label">Thumbnail-Konzept</div>
+        <div class="thumbnail-concept">Blutpr&ouml;bchen-R&ouml;hrchen im Fokus &middot; Benjamin mit ernstem Blick &middot; Text: &bdquo;5 WERTE&ldquo; gro&szlig; &middot; Rotes Ausrufezeichen</div>
+      </div>
+    </div>
+
+    <!-- IDEA 5 -->
+    <div class="idea-card suggest-marker" onclick="this.classList.toggle('open')">
+      <div class="idea-header">
+        <div class="idea-number">5</div>
+        <div class="idea-title-wrap">
+          <div class="idea-title">BURNOUT ist KEINE psychische Krankheit &mdash; Der Beweis!</div>
+          <div class="idea-meta">
+            <span class="tag prio-hoch">&#9733; Hohe Prio</span>
+            <span class="tag thema">Psyche / Stoffwechsel</span>
+            <span class="tag potential">&#128200; 80K+ Potenzial</span>
+          </div>
+        </div>
+        <div class="idea-toggle">&#9660;</div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-section-label">Warum dieses Video?</div>
+        <p>Das Narrativ &bdquo;psychische Symptome haben k&ouml;rperliche Ursachen&ldquo; ist Benjamins st&auml;rkstes Differenzierungsmerkmal. Videos in dieser Richtung laufen auf dem Kanal konstant gut und sprechen eine riesige, neue Zielgruppe an, die bisher keine Post-Vac-Inhalte konsumiert.</p>
+
+        <div class="idea-section-label">Hook-Vorschlag</div>
+        <div class="hook-box">
+          &bdquo;Millionen Deutsche bekommen die Diagnose Burnout und werden mit Antidepressiva nach Hause geschickt. Aber was, wenn dein Burnout gar keine psychische Krankheit ist? Ich zeige dir heute den biochemischen Beweis, warum dein K&ouml;rper &mdash; nicht dein Kopf &mdash; am Ende ist.&ldquo;
+        </div>
+
+        <div class="idea-section-label">Inhaltliche Eckpunkte</div>
+        <ul>
+          <li>Nebennierenschw&auml;che: Cortisol-Tagesprofil erkl&auml;ren</li>
+          <li>Mitochondrien-Dysfunktion: Warum die Zellen keine Energie mehr produzieren</li>
+          <li>Schilddr&uuml;se: TSH normal &#8800; Schilddr&uuml;se gesund (fT3, fT4, rT3)</li>
+          <li>Verbindung zu Spike/Post-Vac: Viele &bdquo;Burnout&ldquo;-Diagnosen sind eigentlich Post-Vac</li>
+          <li>Fallbeispiel: Patient mit &bdquo;Burnout&ldquo;-Diagnose &rarr; echte Ursache gefunden &rarr; gesund</li>
+        </ul>
+
+        <div class="idea-section-label">Thumbnail-Konzept</div>
+        <div class="thumbnail-concept">Gehirn-Grafik mit durchgestrichenem &bdquo;BURNOUT&ldquo; &middot; Daneben: Mitochondrien/Zell-Grafik &middot; Benjamin deutet auf die Zelle &middot; Kontrastreich, rot-gr&uuml;n</div>
+      </div>
+    </div>
+
+    <!-- IDEA 6 -->
+    <div class="idea-card suggest-marker" onclick="this.classList.toggle('open')">
+      <div class="idea-header">
+        <div class="idea-number">6</div>
+        <div class="idea-title-wrap">
+          <div class="idea-title">SCHILDDR&Uuml;SE: Warum dein TSH-Wert NICHTS aussagt!</div>
+          <div class="idea-meta">
+            <span class="tag prio-hoch">&#9733; Hohe Prio</span>
+            <span class="tag thema">Hormone / Schilddr&uuml;se</span>
+            <span class="tag potential">&#128200; 60K+ Potenzial</span>
+            <span class="tag neu">&#10024; Neue Kategorie</span>
+          </div>
+        </div>
+        <div class="idea-toggle">&#9660;</div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-section-label">Warum dieses Video?</div>
+        <p>Hormone/Schilddr&uuml;se hat nur 2 Videos auf dem Kanal &mdash; massives Wachstumspotenzial. Schilddr&uuml;senprobleme betreffen Millionen (v.a. Frauen 30-55), &uuml;berschneiden sich stark mit der Zielgruppe und sind ein starker YouTube-Suchbegriff. Hashimoto + Post-Vac ist ein hei&szlig;es Thema.</p>
+
+        <div class="idea-section-label">Hook-Vorschlag</div>
+        <div class="hook-box">
+          &bdquo;Dein Arzt sagt, deine Schilddr&uuml;se ist in Ordnung, weil der TSH-Wert normal ist? Genau DAS h&ouml;re ich bei fast jedem Patienten, der dann mit M&uuml;digkeit, Haarausfall und 10 Kilo mehr zu mir kommt. Der TSH-Wert allein ist fast wertlos &mdash; und ich zeige dir heute, welche 4 Werte du wirklich brauchst.&ldquo;
+        </div>
+
+        <div class="idea-section-label">Inhaltliche Eckpunkte</div>
+        <ul>
+          <li>TSH, fT3, fT4, rT3, Antik&ouml;rper: Das vollst&auml;ndige Schilddr&uuml;sen-Panel</li>
+          <li>Hashimoto als h&auml;ufigste Autoimmunerkrankung: Warum sie so oft &uuml;bersehen wird</li>
+          <li>Verbindung Spike-Protein und Autoimmun-Thyreoiditis</li>
+          <li>Jod, Selen, Zink: Was die Schilddr&uuml;se wirklich braucht</li>
+          <li>Wann L-Thyroxin allein nicht reicht (T3-Konversionsst&ouml;rung)</li>
+        </ul>
+
+        <div class="idea-section-label">Thumbnail-Konzept</div>
+        <div class="thumbnail-concept">Nahaufnahme Hals/Schilddr&uuml;se &middot; &bdquo;TSH&ldquo; durchgestrichen in rot &middot; Benjamin h&auml;lt Laborzettel hoch &middot; Schockierter Gesichtsausdruck</div>
+      </div>
+    </div>
+
+    <!-- IDEA 7 -->
+    <div class="idea-card suggest-marker" onclick="this.classList.toggle('open')">
+      <div class="idea-header">
+        <div class="idea-number">7</div>
+        <div class="idea-title-wrap">
+          <div class="idea-title">Z&Auml;HNE machen KRANK: Die Verbindung, die keiner sieht!</div>
+          <div class="idea-meta">
+            <span class="tag prio-hoch">&#9733; Hohe Prio</span>
+            <span class="tag thema">Zahnst&ouml;rfelder</span>
+            <span class="tag potential">&#128200; 60K+ Potenzial</span>
+          </div>
+        </div>
+        <div class="idea-toggle">&#9660;</div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-section-label">Warum dieses Video?</div>
+        <p>Das Zotzmann-Interview zu Z&auml;hne &amp; Organe hat stark performt &mdash; f&uuml;r ein Interview-Format. Ein eigenes Erkl&auml;rvideo von Benjamin kann das deutlich &uuml;bertreffen. Z&auml;hne als Krankheitsursache ist ein &bdquo;Aha-Moment&ldquo;-Thema mit hohem Sharing-Potenzial.</p>
+
+        <div class="idea-section-label">Hook-Vorschlag</div>
+        <div class="hook-box">
+          &bdquo;Was, wenn ich dir sage, dass deine chronische M&uuml;digkeit, deine Gelenkschmerzen, sogar dein Herzrasen &mdash; von einem toten Zahn kommen k&ouml;nnten? Klingt verr&uuml;ckt? Ich habe Patienten erlebt, die jahrelang von Arzt zu Arzt gelaufen sind und nach einer Zahnsanierung pl&ouml;tzlich gesund wurden.&ldquo;
+        </div>
+
+        <div class="idea-section-label">Inhaltliche Eckpunkte</div>
+        <ul>
+          <li>St&ouml;rfelder: Tote Z&auml;hne, Weisheitsz&auml;hne, NICO/FDOK</li>
+          <li>Meridian-Zuordnung: Welcher Zahn mit welchem Organ verbunden ist</li>
+          <li>Toxine aus toten Z&auml;hnen: Thioether, Mercaptane</li>
+          <li>OPG vs. DVT: Welche R&ouml;ntgendiagnostik wirklich n&ouml;tig ist</li>
+          <li>Fallbeispiele: Chronisch krank &rarr; Zahnsanierung &rarr; Beschwerdefrei</li>
+        </ul>
+
+        <div class="idea-section-label">Thumbnail-Konzept</div>
+        <div class="thumbnail-concept">Gesplittetes Bild: Ein Zahn links, ein Organ (Herz/Gehirn) rechts &middot; Verbindungslinie dazwischen &middot; Benjamin zeigt schockiert &middot; Text: &bdquo;DEIN ZAHN?!&ldquo;</div>
+      </div>
+    </div>
+
+    <!-- IDEA 8 -->
+    <div class="idea-card suggest-marker" onclick="this.classList.toggle('open')">
+      <div class="idea-header">
+        <div class="idea-number">8</div>
+        <div class="idea-title-wrap">
+          <div class="idea-title">Long COVID: Warum du nach JAHREN pl&ouml;tzlich Symptome bekommst!</div>
+          <div class="idea-meta">
+            <span class="tag prio-hoch">&#9733; Hohe Prio</span>
+            <span class="tag thema">Long COVID / Sp&auml;tfolgen</span>
+            <span class="tag potential">&#128200; 80K+ Potenzial</span>
+          </div>
+        </div>
+        <div class="idea-toggle">&#9660;</div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-section-label">Warum dieses Video?</div>
+        <p>Sp&auml;tfolgen-Themen treffen einen Nerv. Viele Menschen sp&uuml;ren jetzt erst Beschwerden und suchen Erkl&auml;rungen. 2026 ist das Thema relevanter denn je. Hier k&ouml;nnen auch die vorhandenen Animationen (Eisberg, Autobahn) eingesetzt werden.</p>
+
+        <div class="idea-section-label">Hook-Vorschlag</div>
+        <div class="hook-box">
+          &bdquo;2020, 2021, 2022 &mdash; alles war gut. Und dann, Jahre sp&auml;ter, bricht dein K&ouml;rper pl&ouml;tzlich zusammen. Immer mehr Menschen erleben das gerade &mdash; und die Medizin steht davor und sagt: &lsquo;Wir finden nichts.&rsquo; Heute erkl&auml;re ich dir, warum dein K&ouml;rper ein Zeitschloss hat &mdash; und wann es sich &ouml;ffnet.&ldquo;
+        </div>
+
+        <div class="idea-section-label">Inhaltliche Eckpunkte</div>
+        <ul>
+          <li>Das Eisberg-Modell: 1/7 sichtbar, 6/7 unter der Oberfl&auml;che (vorhandene Animation nutzen!)</li>
+          <li>Tipping Point: Warum es pl&ouml;tzlich &bdquo;kippt&ldquo; &mdash; die Autobahn-Analogie</li>
+          <li>Persistierendes Spike: Neue Studien zeigen Reservoirs im K&ouml;rper</li>
+          <li>Warum Stress, Infektion oder OP der Trigger sein k&ouml;nnen</li>
+          <li>Was Betroffene JETZT tun sollten &mdash; erster Schritt</li>
+        </ul>
+
+        <div class="idea-section-label">Thumbnail-Konzept</div>
+        <div class="thumbnail-concept">Zeitstrahl: 2020 &rarr; 2026 mit Explosion am Ende &middot; Benjamin mit besorgt/erkl&auml;rendem Gesicht &middot; Text: &bdquo;JETZT erst?!&ldquo; &middot; Rot/Orange-Farbwelt</div>
+      </div>
+    </div>
+
+    <!-- IDEA 9 -->
+    <div class="idea-card suggest-marker" onclick="this.classList.toggle('open')">
+      <div class="idea-header">
+        <div class="idea-number">9</div>
+        <div class="idea-title-wrap">
+          <div class="idea-title">GLYPHOSAT im Essen: So zerst&ouml;rt es deinen Darm!</div>
+          <div class="idea-meta">
+            <span class="tag thema">Umweltgifte / Darm</span>
+            <span class="tag potential">&#128200; 50K+ Potenzial</span>
+            <span class="tag format">Crossover-Thema</span>
+          </div>
+        </div>
+        <div class="idea-toggle">&#9660;</div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-section-label">Warum dieses Video?</div>
+        <p>Verbindet zwei starke Kategorien: Entgiftung/Gifte und Darm. Glyphosat ist ein Mainstream-Suchbegriff, der auch Menschen au&szlig;erhalb der Post-Vac-Bubble anspricht. Perfekt um neue Zuschauer zu gewinnen.</p>
+
+        <div class="idea-section-label">Hook-Vorschlag</div>
+        <div class="hook-box">
+          &bdquo;Du isst es jeden Tag &mdash; und es zerst&ouml;rt langsam deinen Darm. Glyphosat ist das am meisten eingesetzte Pestizid der Welt, und es steckt in Lebensmitteln, die du f&uuml;r gesund h&auml;ltst. Heute zeige ich dir, wie es dein Mikrobiom systematisch umbringt &mdash; und was das mit deinen Beschwerden zu tun hat.&ldquo;
+        </div>
+
+        <div class="idea-section-label">Inhaltliche Eckpunkte</div>
+        <ul>
+          <li>Glyphosat als Antibiotikum: Wie es gute Darmbakterien t&ouml;tet</li>
+          <li>Tight Junctions: Glyphosat &ouml;ffnet die Darmbarriere (Leaky Gut)</li>
+          <li>Verbindung: Glyphosat + Spike = doppelte Belastung f&uuml;r den Darm</li>
+          <li>Welche Lebensmittel am st&auml;rksten belastet sind</li>
+          <li>Praktische Schritte: Bio, Detox-Protokoll, Darm-Rebuild</li>
+        </ul>
+
+        <div class="idea-section-label">Thumbnail-Konzept</div>
+        <div class="thumbnail-concept">Weizenbr&ouml;tchen/Brot mit Gift-Symbol &middot; Benjamin h&auml;lt Brot und macht ablehnende Geste &middot; Text: &bdquo;GIFT im Brot?!&ldquo; &middot; Gelb/Rot-Warnung</div>
+      </div>
+    </div>
+
+    <!-- IDEA 10 -->
+    <div class="idea-card suggest-marker" onclick="this.classList.toggle('open')">
+      <div class="idea-header">
+        <div class="idea-number">10</div>
+        <div class="idea-title-wrap">
+          <div class="idea-title">Mein PATIENT war aufgegeben &mdash; Dann haben wir DAS gemacht!</div>
+          <div class="idea-meta">
+            <span class="tag thema">Fallstudie / Storytelling</span>
+            <span class="tag potential">&#128200; 40K+ Potenzial</span>
+            <span class="tag format">Neues Format</span>
+          </div>
+        </div>
+        <div class="idea-toggle">&#9660;</div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-section-label">Warum dieses Video?</div>
+        <p>Solo-Patientenerfahrungen performen schlecht. Die L&ouml;sung: Benjamin erz&auml;hlt die Story &mdash; der Patient best&auml;tigt. Arzt-gef&uuml;hrtes Storytelling statt Patienten-Monolog. Das Engagement bei solchen Formaten ist deutlich h&ouml;her.</p>
+
+        <div class="idea-section-label">Hook-Vorschlag</div>
+        <div class="hook-box">
+          &bdquo;Diese Patientin war bei 14 &Auml;rzten. Diagnose: Psychosomatisch, nehmen Sie Antidepressiva. Als sie zu mir kam, konnte sie kaum noch gehen. Heute, 8 Monate sp&auml;ter, l&auml;uft sie Marathon. Was wir gemacht haben &mdash; und warum 14 &Auml;rzte vorher daneben lagen &mdash; zeige ich dir jetzt.&ldquo;
+        </div>
+
+        <div class="idea-section-label">Inhaltliche Eckpunkte</div>
+        <ul>
+          <li>Die komplette Patienten-Journey: Symptom &rarr; 14 &Auml;rzte &rarr; B&ouml;rner Lebenswerk</li>
+          <li>Benjamin erkl&auml;rt seine Diagnostik Schritt f&uuml;r Schritt</li>
+          <li>Die Laborergebnisse: Was &uuml;bersehen wurde</li>
+          <li>Therapieplan: Was genau gemacht wurde (Timeline)</li>
+          <li>Patient kommt am Ende dazu und best&auml;tigt (kurzes Interview-Segment)</li>
+        </ul>
+
+        <div class="idea-section-label">Thumbnail-Konzept</div>
+        <div class="thumbnail-concept">&bdquo;Vorher/Nachher&ldquo;-Split &middot; Links: Bett/Ersch&ouml;pfung &middot; Rechts: Aktiv/Sport &middot; Benjamin in der Mitte &middot; Text: &bdquo;14 &Auml;rzte = 0 Antworten&ldquo;</div>
+      </div>
+    </div>
+
+    <!-- IDEA 11 -->
+    <div class="idea-card suggest-marker" onclick="this.classList.toggle('open')">
+      <div class="idea-header">
+        <div class="idea-number">11</div>
+        <div class="idea-title-wrap">
+          <div class="idea-title">KINDER &amp; SPIKE: Was Eltern JETZT wissen m&uuml;ssen!</div>
+          <div class="idea-meta">
+            <span class="tag prio-hoch">&#9733; Hohe Prio</span>
+            <span class="tag thema">Kinder / Spike</span>
+            <span class="tag potential">&#128200; 50K+ Potenzial</span>
+          </div>
+        </div>
+        <div class="idea-toggle">&#9660;</div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-section-label">Warum dieses Video?</div>
+        <p>Kinder-Themen haben das h&ouml;chste Engagement auf dem Kanal. Eltern sind extrem besorgt und suchen aktiv nach Infos. Das Video &ouml;ffnet eine komplett neue Zielgruppe: besorgte Eltern, die bisher keine typischen Post-Vac-Inhalte schauen.</p>
+
+        <div class="idea-section-label">Hook-Vorschlag</div>
+        <div class="hook-box">
+          &bdquo;Immer mehr Kinder sind chronisch m&uuml;de, haben Konzentrationsprobleme, klagen &uuml;ber Bauchschmerzen. Kinder&auml;rzte sagen: Alles normal, das verw&auml;chst sich. Aber was, wenn es sich nicht verw&auml;chst? Als Vater und als Mediziner muss ich heute &uuml;ber etwas sprechen, das viele nicht h&ouml;ren wollen.&ldquo;
+        </div>
+
+        <div class="idea-section-label">Inhaltliche Eckpunkte</div>
+        <ul>
+          <li>Wie sich Post-Vac/Long COVID bei Kindern anders zeigt als bei Erwachsenen</li>
+          <li>Die h&auml;ufigsten &uuml;bersehenen Symptome bei Kindern</li>
+          <li>Labordiagnostik bei Kindern: Was sinnvoll ist, was nicht</li>
+          <li>Praktische Ma&szlig;nahmen: Ern&auml;hrung, Mikron&auml;hrstoffe, Darmsanierung f&uuml;r Kinder</li>
+          <li>Wann Eltern handeln sollten &mdash; Red Flags</li>
+        </ul>
+
+        <div class="idea-section-label">Thumbnail-Konzept</div>
+        <div class="thumbnail-concept">Kind mit m&uuml;dem/traurigem Gesicht &middot; Benjamin besorgt daneben &middot; Schutzschild-Symbol &middot; Text: &bdquo;KINDER in Gefahr?&ldquo; &middot; Warme aber ernste Farbgebung</div>
+      </div>
+    </div>
+
+    <!-- IDEA 12 -->
+    <div class="idea-card suggest-marker" onclick="this.classList.toggle('open')">
+      <div class="idea-header">
+        <div class="idea-number">12</div>
+        <div class="idea-title-wrap">
+          <div class="idea-title">EMF &amp; 5G: Macht dein Handy dich KRANK? Ein Arzt spricht Klartext!</div>
+          <div class="idea-meta">
+            <span class="tag thema">Umweltfaktoren / EMF</span>
+            <span class="tag potential">&#128200; 40K+ Potenzial</span>
+            <span class="tag neu">&#10024; Neue Kategorie</span>
+          </div>
+        </div>
+        <div class="idea-toggle">&#9660;</div>
+      </div>
+      <div class="idea-body">
+        <div class="idea-section-label">Warum dieses Video?</div>
+        <p>EMF ist ein Thema im Kursmodul (Gro&szlig;e Einflussfaktoren) und noch gar nicht auf dem Kanal vertreten. Es ist ein polarisierendes Thema mit hohem Suchvolumen und spricht die Zielgruppe perfekt an. Bonus: Es kann als Teaser f&uuml;r den Online-Kurs dienen, wo das Thema vertieft wird.</p>
+
+        <div class="idea-section-label">Hook-Vorschlag</div>
+        <div class="hook-box">
+          &bdquo;Dein Handy liegt nachts neben deinem Kopf? Dein WLAN l&auml;uft 24/7? Die meisten sagen: Ist doch harmlos. Aber wenn ich dir zeige, was elektromagnetische Strahlung mit deinen Zellen macht &mdash; besonders wenn du ohnehin chronisch krank bist &mdash; wirst du dein Schlafzimmer heute Abend umr&auml;umen.&ldquo;
+        </div>
+
+        <div class="idea-section-label">Inhaltliche Eckpunkte</div>
+        <ul>
+          <li>Was EMF mit Zellmembranen und Kalzium-Kan&auml;len macht</li>
+          <li>Warum chronisch Kranke empfindlicher reagieren</li>
+          <li>Schlaf als Regeneration: Warum das Schlafzimmer der wichtigste Raum ist</li>
+          <li>5 praktische Sofort-Ma&szlig;nahmen (kein Aluhut n&ouml;tig)</li>
+          <li>Messger&auml;te: Wie man selbst die Belastung pr&uuml;fen kann</li>
+        </ul>
+
+        <div class="idea-section-label">Thumbnail-Konzept</div>
+        <div class="thumbnail-concept">Handy mit Strahlen-Wellen &middot; Benjamin mit warnendem Finger &middot; Schlafzimmer im Hintergrund &middot; Text: &bdquo;DEIN HANDY?!&ldquo; &middot; Blau/Rot-Kontrast</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EMPFOHLENE REIHENFOLGE -->
+  <div class="section">
+    <div class="section-title"><span class="icon">&#128640;</span> Empfohlene Reihenfolge</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Phase</th><th>Videos</th><th>Begr&uuml;ndung</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag prio-mega">Sofort</span></td>
+          <td><strong>#3</strong> Spike-Detox<br><strong>#1</strong> Histamin-Explosion<br><strong>#4</strong> 5 Laborwerte</td>
+          <td>H&ouml;chstes View-Potenzial, bauen auf den st&auml;rksten Kategorien auf, werden von der Community aktiv gesucht</td>
+        </tr>
+        <tr>
+          <td><span class="tag prio-hoch">Phase 2</span></td>
+          <td><strong>#5</strong> Burnout<br><strong>#2</strong> Darm-Hirn-Achse<br><strong>#8</strong> Sp&auml;tfolgen</td>
+          <td>Starkes Potenzial, spricht auch Mainstream-Publikum an, Bridge-Content zum Kurs</td>
+        </tr>
+        <tr>
+          <td><span class="tag format">Phase 3</span></td>
+          <td><strong>#6</strong> Schilddr&uuml;se<br><strong>#7</strong> Z&auml;hne<br><strong>#11</strong> Kinder</td>
+          <td>Neue Kategorien erschlie&szlig;en, breitere Zielgruppe ansprechen</td>
+        </tr>
+        <tr>
+          <td><span class="tag thema">Laufend</span></td>
+          <td><strong>#9</strong> Glyphosat<br><strong>#10</strong> Fallstudie<br><strong>#12</strong> EMF</td>
+          <td>Crossover-Themen und neue Formate f&uuml;r kontinuierliches Wachstum</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Erstellt am 23.04.2026 &middot; Schmidtke GmbH<br>
+    Alle Vorschl&auml;ge basieren auf der Kanalperformance, Marktanalyse und Zielgruppen-Fit
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var first = document.querySelector('.idea-card');
+    if (first) first.classList.add('open');
+  });
+</script>
+</body>
+</html>
