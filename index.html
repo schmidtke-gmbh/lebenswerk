@@ -28,6 +28,9 @@
     --suggest-bg: linear-gradient(135deg, #fff7ed, #ffedd5);
     --suggest-border: #fdba74;
     --suggest-text: #9a3412;
+    --new: #059669;
+    --new-bg: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    --new-border: #6ee7b7;
   }
 
   body {
@@ -38,7 +41,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Hero — Börner dunkel + Gold-Akzent */
   .hero {
     background: linear-gradient(135deg, #1a1a1a 0%, #2e2e2e 60%, #3a3a3a 100%);
     color: #fff;
@@ -91,7 +93,6 @@
     padding: 40px 24px 80px;
   }
 
-  /* Stats */
   .stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -120,7 +121,6 @@
     letter-spacing: 0.5px;
   }
 
-  /* Vorschlag-Banner */
   .suggest-banner {
     background: var(--suggest-bg);
     border: 2px dashed var(--suggest-border);
@@ -143,7 +143,6 @@
     line-height: 1.6;
   }
 
-  /* Legend */
   .legend {
     background: var(--card);
     border-radius: var(--radius);
@@ -183,7 +182,6 @@
   .legend-dot.download { background: #e0f2fe; color: #0284c7; }
   .legend-dot.suggest { background: #ffedd5; color: var(--suggest); }
 
-  /* Video-Typ Legend */
   .legend-videotypes {
     background: var(--card);
     border-radius: var(--radius);
@@ -199,7 +197,6 @@
     color: var(--text);
   }
 
-  /* Video-Typ Badges */
   .vtype {
     display: inline-flex;
     align-items: center;
@@ -211,30 +208,12 @@
     margin-top: 6px;
     letter-spacing: 0.3px;
   }
-  .vtype.talking-head {
-    background: #dbeafe;
-    color: #1e40af;
-  }
-  .vtype.talking-head::before {
-    content: '🎙';
-    font-size: 12px;
-  }
-  .vtype.whiteboard {
-    background: #dcfce7;
-    color: #166534;
-  }
-  .vtype.whiteboard::before {
-    content: '🖊';
-    font-size: 12px;
-  }
-  .vtype.folien {
-    background: #fef3e2;
-    color: #92400e;
-  }
-  .vtype.folien::before {
-    content: '📊';
-    font-size: 12px;
-  }
+  .vtype.talking-head { background: #dbeafe; color: #1e40af; }
+  .vtype.talking-head::before { content: '\1F399'; font-size: 12px; }
+  .vtype.whiteboard { background: #dcfce7; color: #166534; }
+  .vtype.whiteboard::before { content: '\1F58A'; font-size: 12px; }
+  .vtype.folien { background: #fef3e2; color: #92400e; }
+  .vtype.folien::before { content: '\1F4CA'; font-size: 12px; }
   .vtype-dot {
     width: 28px; height: 28px;
     border-radius: 7px;
@@ -247,7 +226,6 @@
   .vtype-dot.wb { background: #dcfce7; }
   .vtype-dot.fo { background: #fef3e2; }
 
-  /* Module Card */
   .module {
     background: var(--card);
     border-radius: var(--radius);
@@ -375,7 +353,6 @@
     margin-top: 3px;
   }
 
-  /* Tags */
   .tag {
     display: inline-block;
     font-size: 11px;
@@ -393,8 +370,8 @@
   .tag.therapie { background: #dbeafe; color: #1e40af; }
   .tag.vorschlag { background: #ffedd5; color: var(--suggest); }
   .tag.pdf { background: #e0f2fe; color: #0284c7; }
+  .tag.neu { background: #d1fae5; color: #059669; }
 
-  /* Note card */
   .note-card {
     background: linear-gradient(135deg, var(--gold-lighter), var(--gold-light));
     border: 1px solid var(--gold);
@@ -407,7 +384,6 @@
   }
   .note-card strong { font-weight: 600; }
 
-  /* CTA card */
   .cta-card {
     background: var(--suggest-bg);
     border: 2px dashed var(--suggest-border);
@@ -439,7 +415,6 @@
     margin-bottom: 6px;
   }
 
-  /* Outro CTA */
   .outro-cta {
     background: linear-gradient(135deg, #1a1a1a, #2e2e2e);
     border-radius: var(--radius);
@@ -485,7 +460,6 @@
   }
   .outro-cta .cta-btn:hover { background: var(--gold-dark); }
 
-  /* Section divider */
   .section-divider {
     display: flex;
     align-items: center;
@@ -521,7 +495,7 @@
 <body>
 
 <div class="hero">
-  <div class="hero-badge">ONLINE KURS — ENTWURF</div>
+  <div class="hero-badge">ONLINE KURS — ENTWURF V2</div>
   <h1>Long COVID <span class="gold">/</span> Post VAC</h1>
   <p>Integrative Medizin mit Benjamin Börner — Fundament für Betroffene aller Schweregrade</p>
 </div>
@@ -530,30 +504,30 @@
 
   <div class="stats">
     <div class="stat-card">
-      <div class="number">7</div>
+      <div class="number">10</div>
       <div class="label">Module</div>
     </div>
     <div class="stat-card">
-      <div class="number">30+</div>
+      <div class="number">50+</div>
       <div class="label">Video-Lektionen</div>
     </div>
     <div class="stat-card">
-      <div class="number">~6–8 h</div>
+      <div class="number">~12–16 h</div>
       <div class="label">Gesamtdauer</div>
     </div>
     <div class="stat-card">
-      <div class="number">5+</div>
+      <div class="number">8+</div>
       <div class="label">Animationen</div>
     </div>
     <div class="stat-card">
-      <div class="number">10+</div>
+      <div class="number">15+</div>
       <div class="label">PDFs & Downloads</div>
     </div>
   </div>
 
   <div class="suggest-banner">
     <h3><span style="font-size:18px;">&#9670;</span> Lesehinweis: Vorschläge von Schmidtke</h3>
-    <p>Alle Elemente mit <strong style="color:var(--suggest);">orangem Rand</strong> und dem Label <strong style="color:var(--suggest);">VORSCHLAG SCHMIDTKE</strong> sind unsere Ergänzungsvorschläge — Download-Materialien, Protokolle, Checklisten und verkaufspsychologische Akzente, die den Kurswert steigern und den Übergang zur Vor-Ort-Behandlung schaffen. Benjamins Fachinhalte bleiben unverändert.</p>
+    <p>Alle Elemente mit <strong style="color:var(--suggest);">orangem Rand</strong> und dem Label <strong style="color:var(--suggest);">VORSCHLAG SCHMIDTKE</strong> sind unsere Ergänzungsvorschläge. Elemente mit <strong style="color:var(--new);">grünem NEU-Tag</strong> sind neue Inhalte aus dem erweiterten Briefing des Kunden. Benjamins Fachinhalte bleiben unverändert.</p>
   </div>
 
   <div class="legend">
@@ -577,7 +551,7 @@
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- STARTE HIER                             -->
+  <!-- START                                   -->
   <!-- ═══════════════════════════════════════ -->
   <div class="module open" onclick="this.classList.toggle('open')">
     <div class="module-header">
@@ -615,22 +589,22 @@
         <div class="lesson-icon video">▶</div>
         <div class="lesson-info">
           <div class="title">Für wen ist dieser Kurs?</div>
-          <div class="desc">Von sehr leichten bis sehr schweren Beschwerden — warum dieser Kurs für alle Betroffenen das Fundament bildet.</div>
+          <div class="desc">Von sehr leichten bis sehr schweren Beschwerden — warum dieser Kurs für alle Betroffenen das Fundament bildet. Nur wer VERSTEHT, was im Organismus passiert, kann aktiv den Weg zurück zur Gesundheit wählen. Klare Differenzierung: Mittelschwere und schwere Verläufe müssen zwingend professionell begleitet werden.</div>
           <span class="tag wichtig">Wichtiger Hinweis</span>
           <span class="vtype talking-head">Talking Head</span>
         </div>
-        <div class="lesson-time">~2 min</div>
+        <div class="lesson-time">~3 min</div>
       </div>
 
       <div class="note-card">
-        <strong>Hinweis für Teilnehmer:</strong> Aufgrund der Erfahrung mit vielen hunderten Long COVID / Post VAC Patienten gibt es eine klare Kategorisierung, wann zwingend Diagnostik vor Therapie stattfinden muss. Dieser Kurs schafft zuerst das notwendige Verständnis.
+        <strong>Hinweis für Teilnehmer:</strong> Dieser Kurs ist die Eintrittspforte zu einem umfassenden Verständnis. Er bildet den Boden dafür, aktiv wählen zu können: Heimanwendung oder professionelle Begleitung. Mechanismen erkennen und klare Ableitungen treffen — das ist der schnellste Weg zurück ins Leben.
       </div>
 
       <div class="lesson vorschlag">
         <div class="lesson-icon suggest">&#9670;</div>
         <div class="lesson-info">
           <div class="title">Wer ist Börner Lebenswerk?</div>
-          <div class="desc">Kurzvorstellung des Zentrums für Integrative Medizin in Tübingen. Was macht das Team, seit wann, wie viele Patienten betreut? Positioniert den Kurs als Wissensgrundlage — und das Zentrum als nächsten Schritt für individuelle Betreuung.</div>
+          <div class="desc">Kurzvorstellung des Zentrums für Integrative Medizin in Tübingen. Positioniert den Kurs als Wissensgrundlage — und das Zentrum als nächsten Schritt für individuelle Betreuung.</div>
           <span class="tag vorschlag">Vorschlag Schmidtke</span>
           <span class="vtype talking-head">Talking Head</span>
         </div>
@@ -641,7 +615,7 @@
         <div class="lesson-icon suggest">&#9670;</div>
         <div class="lesson-info">
           <div class="title">Wichtig: Das ist kein Ersatz für ärztliche Diagnostik!</div>
-          <div class="desc">Klare Abgrenzung: Der Kurs schafft Verständnis — bei mittleren bis schweren Verläufen ist professionelle Diagnostik zwingend notwendig. Setzt Erwartungen richtig und schützt rechtlich.</div>
+          <div class="desc">Klare Abgrenzung: Der Kurs schafft Verständnis — bei mittleren bis schweren Verläufen ist professionelle Diagnostik zwingend notwendig.</div>
           <span class="tag vorschlag">Vorschlag Schmidtke</span>
           <span class="vtype talking-head">Talking Head</span>
         </div>
@@ -652,7 +626,7 @@
         <div class="lesson-icon suggest">&#9670;</div>
         <div class="lesson-info">
           <div class="title">Was du in diesem Kurs alles bekommst</div>
-          <div class="desc">Übersicht aller enthaltenen Materialien — Videos, Animationen, PDFs, Workbook, Protokolle, Einnahmeplan, Tracker. Der Teilnehmer sieht sofort den vollen Umfang dessen, was er bekommt.</div>
+          <div class="desc">Übersicht aller enthaltenen Materialien — Videos, Animationen, PDFs, Workbook, Protokolle, Einnahmeplan, Tracker.</div>
           <span class="tag vorschlag">Vorschlag Schmidtke</span>
           <span class="vtype folien">Folien-Vortrag</span>
         </div>
@@ -663,7 +637,7 @@
         <div class="lesson-icon social">&#9733;</div>
         <div class="lesson-info">
           <div class="title">Erfolgsgeschichten: Patienten berichten</div>
-          <div class="desc">2–3 kurze Patientenberichte (anonymisiert oder mit Einverständnis), die zeigen: Der Ansatz funktioniert. Gibt neuen Teilnehmern Zuversicht und stärkt die Glaubwürdigkeit.</div>
+          <div class="desc">2–3 kurze Patientenberichte. Gibt neuen Teilnehmern Zuversicht und stärkt die Glaubwürdigkeit.</div>
           <span class="tag vorschlag">Vorschlag Schmidtke</span>
           <span class="vtype talking-head">Talking Head</span>
         </div>
@@ -673,29 +647,8 @@
       <div class="lesson vorschlag">
         <div class="lesson-icon suggest">&#9670;</div>
         <div class="lesson-info">
-          <div class="title">So erhältst du alle Updates</div>
-          <div class="desc">Kurzer Hinweis: Der Kurs wird regelmäßig aktualisiert, wenn neue Erkenntnisse vorliegen. Schafft Vertrauen, dass der Kurs lebendig bleibt und der Teilnehmer langfristig profitiert.</div>
-          <span class="tag vorschlag">Vorschlag Schmidtke</span>
-          <span class="vtype talking-head">Talking Head</span>
-        </div>
-        <div class="lesson-time">~1 min</div>
-      </div>
-
-      <div class="lesson">
-        <div class="lesson-icon video">▶</div>
-        <div class="lesson-info">
-          <div class="title">So geht es jetzt weiter</div>
-          <div class="desc">Kurze Überleitung zum ersten Fachmodul. Empfohlene Reihenfolge und begleitende Materialien.</div>
-          <span class="vtype talking-head">Talking Head</span>
-        </div>
-        <div class="lesson-time">~1 min</div>
-      </div>
-
-      <div class="lesson vorschlag">
-        <div class="lesson-icon suggest">&#9670;</div>
-        <div class="lesson-info">
           <div class="title">PDF: Selbsteinschätzungs-Fragebogen</div>
-          <div class="desc">Fragebogen zur Einordnung auf der Schweregrad-Skala (sehr leicht bis sehr schwer). Hilft bei der Orientierung im Kurs und bei späteren Arztgesprächen.</div>
+          <div class="desc">Fragebogen zur Einordnung auf der Schweregrad-Skala. Hilft bei der Orientierung im Kurs und bei späteren Arztgesprächen.</div>
           <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
         </div>
       </div>
@@ -704,7 +657,7 @@
         <div class="lesson-icon suggest">&#9670;</div>
         <div class="lesson-info">
           <div class="title">PDF: Kurs-Workbook / Begleitheft</div>
-          <div class="desc">Begleitendes Workbook mit Platz für Notizen zu jedem Modul, Reflexionsfragen und Fortschritts-Checkliste. Zum Ausdrucken — gibt dem Kurs einen greifbaren Wert.</div>
+          <div class="desc">Begleitendes Workbook mit Platz für Notizen zu jedem Modul, Reflexionsfragen und Fortschritts-Checkliste.</div>
           <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
         </div>
       </div>
@@ -719,16 +672,16 @@
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- MODUL 1 — Leitlinien-Medizin            -->
+  <!-- MODUL 1 — Begrüßung & Einleitung       -->
   <!-- ═══════════════════════════════════════ -->
   <div class="module" onclick="this.classList.toggle('open')">
     <div class="module-header">
       <div class="module-number" style="background: linear-gradient(135deg, #b8860b, #cdaf70);">1</div>
       <div class="module-meta">
-        <h3>Standortbestimmung & Leitlinien-Medizin</h3>
-        <div class="subtitle">Wo stehen wir seit 2020, S3-Leitlinie & warum die meisten Zentren versagen</div>
+        <h3>Begrüßung & Einleitung — Wo stehen wir?</h3>
+        <div class="subtitle">Pandemie-Rückblick, Designervirus, Morbiditäts-Zeitachse & das SOWOHL-ALS-AUCH-Prinzip</div>
       </div>
-      <div class="module-duration">~45–60 min</div>
+      <div class="module-duration">~60–80 min</div>
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
     </div>
     <div class="lessons">
@@ -736,8 +689,8 @@
       <div class="lesson">
         <div class="lesson-icon video">▶</div>
         <div class="lesson-info">
-          <div class="title">Wo stehen wir seit 2020?</div>
-          <div class="desc">Rückblick auf die Pandemie und die aktuelle Lage. Was hat sich verändert, was wissen wir heute?</div>
+          <div class="title">Wo stehen wir seit Beginn der Pandemie?</div>
+          <div class="desc">Rückblick: Von was ist man ausgegangen (virale Infektion) und was ist es wirklich?</div>
           <span class="vtype talking-head">Talking Head</span>
         </div>
         <div class="lesson-time">~8–12 min</div>
@@ -746,8 +699,20 @@
       <div class="lesson">
         <div class="lesson-icon video">▶</div>
         <div class="lesson-info">
+          <div class="title">Designervirus: HIV-Insertion & Prionenähnlichkeit</div>
+          <div class="desc">Was SARS-CoV-2 von klassischen Viren unterscheidet. Warum die Standardantworten nicht greifen.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag wichtig">Kernkonzept</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
           <div class="title">Die S3-Leitlinie und ihre Grenzen</div>
-          <div class="desc">Was sagt die offizielle Leitlinie? Wo fehlt fundamentales biochemisches Verständnis zu SARS-CoV-2, Impfnebenwirkungen und Spikopathie?</div>
+          <div class="desc">Berechtigung bei Akutmedizin — aber bei chronischen Verläufen diagnostisch und therapeutisch unzureichend. Multisystemische Problematik trifft auf monokausale Leitlinie.</div>
           <span class="vtype whiteboard">Whiteboard</span>
         </div>
         <div class="lesson-time">~10–15 min</div>
@@ -756,31 +721,34 @@
       <div class="lesson">
         <div class="lesson-icon video">▶</div>
         <div class="lesson-info">
-          <div class="title">Akutmedizin vs. chronische Erkrankungen</div>
-          <div class="desc">Wann dient die Leitlinien-Medizin und wann braucht es eine erweiterte, integrative Herangehensweise?</div>
-          <span class="vtype whiteboard">Whiteboard</span>
+          <div class="title">Augenwischerei KV & Kostenerstattung</div>
+          <div class="desc">Einzahlungsbetrag über Jahrzehnte vs. fehlende Wählbarkeit passgenauer Diagnostik und Therapie. Was Patienten wissen müssen.</div>
+          <span class="vtype talking-head">Talking Head</span>
         </div>
         <div class="lesson-time">~8–12 min</div>
-      </div>
-
-      <div class="lesson">
-        <div class="lesson-icon anim">✦</div>
-        <div class="lesson-info">
-          <div class="title">Animation: Das Autobahnbeispiel</div>
-          <div class="desc">Visuelle Erklärung, warum Standardmedizin bei chronischen Verläufen an ihre Grenzen stößt.</div>
-          <span class="tag animation">Vorhandene Animation</span>
-        </div>
-        <div class="lesson-time">~3–5 min</div>
       </div>
 
       <div class="lesson">
         <div class="lesson-icon video">▶</div>
         <div class="lesson-info">
-          <div class="title">Augenwischerei der KV — Was zahlt die Kasse wirklich?</div>
-          <div class="desc">Kassenleistungen vs. tatsächlich notwendige Diagnostik. Was Patienten wissen müssen.</div>
+          <div class="title">Die Morbiditäts-Zeitachse: 3 Phasen</div>
+          <div class="desc"><strong>Phase 1:</strong> Thromboembolie, Myokarditis, Spontanaborte. <strong>Phase 2:</strong> ADE, Autoimmunität, Amyloidosen, Prionenbildung. <strong>Phase 3 (jetzt!):</strong> VAIDS, Krebs, Neurodegeneration, Unfruchtbarkeit. In Phase 3 befinden wir uns 1–10 Jahre nach Infektion/Impfung.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag wichtig">Schlüssellektion</span>
+          <span class="vtype folien">Folien-Vortrag</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Das SOWOHL-ALS-AUCH-Prinzip</div>
+          <div class="desc">Weder reine Schulmedizin noch ausschließlich Naturheilkunde — es braucht ein sinnvolles, effektives, individualisiertes Zusammenspiel. Weg von ENTWEDER-ODER.</div>
+          <span class="tag neu">Neuer Inhalt</span>
           <span class="vtype talking-head">Talking Head</span>
         </div>
-        <div class="lesson-time">~8–12 min</div>
+        <div class="lesson-time">~8–10 min</div>
       </div>
 
       <div class="lesson vorschlag">
@@ -788,15 +756,6 @@
         <div class="lesson-info">
           <div class="title">PDF: Checkliste „Fragen an deinen Arzt"</div>
           <div class="desc">Druckbare Checkliste mit den richtigen Fragen für den nächsten Arztbesuch.</div>
-          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
-        </div>
-      </div>
-
-      <div class="lesson vorschlag">
-        <div class="lesson-icon suggest">&#9670;</div>
-        <div class="lesson-info">
-          <div class="title">PDF: Kassenleistungen vs. Notwendige Diagnostik</div>
-          <div class="desc">Tabellarische Gegenüberstellung: Was zahlt die Kasse, was nicht, warum trotzdem notwendig.</div>
           <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
         </div>
       </div>
@@ -809,12 +768,12 @@
   <!-- ═══════════════════════════════════════ -->
   <div class="module" onclick="this.classList.toggle('open')">
     <div class="module-header">
-      <div class="module-number" style="background: linear-gradient(135deg, #8b7340, #cdaf70);">2</div>
+      <div class="module-number" style="background: linear-gradient(135deg, #a67c3d, #cdaf70);">2</div>
       <div class="module-meta">
         <h3>Wie Krankheit entsteht</h3>
-        <div class="subtitle">Homöostase, Eisbergmodell & der Tipping Point</div>
+        <div class="subtitle">Homöostase, Bifurkation, Tipping Point & Eisbergmodell</div>
       </div>
-      <div class="module-duration">~40–50 min</div>
+      <div class="module-duration">~50–70 min</div>
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
     </div>
     <div class="lessons">
@@ -823,8 +782,29 @@
         <div class="lesson-icon video">▶</div>
         <div class="lesson-info">
           <div class="title">Die homöostatische Kurve</div>
-          <div class="desc">Wie der Körper Balance hält — und wann er aus dem Gleichgewicht kippt.</div>
-          <span class="tag folie">Folie: Homöostatische Kurve</span>
+          <div class="desc">Benni zeichnet am Whiteboard: Wie der Körper Balance hält — und warum der Organismus sich evolutionär eine tiefere Kurve sucht, um Energie zu sparen und Schaden zu begrenzen. Erster Verweis auf CDR als Beispiel.</div>
+          <span class="tag folie">Whiteboard-Zeichnung</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon anim">✦</div>
+        <div class="lesson-info">
+          <div class="title">Animation: Das Autobahnbeispiel (Bifurkation)</div>
+          <div class="desc">Trampelpfad vs. Autobahn — der Punkt, an dem alle Patienten irgendwann stehen.</div>
+          <span class="tag animation">Vorhandene Animation</span>
+        </div>
+        <div class="lesson-time">~3–5 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Der Tipping Point — Dauer & Intensität</div>
+          <div class="desc">Was beeinflusst, wie schnell der Tipping Point erreicht ist? Warum gibt es bei Spikopathie KEINE Spontanheilung? Erstmals in der Medizingeschichte eine klare Einordnung.</div>
+          <span class="tag wichtig">Kernkonzept</span>
           <span class="vtype whiteboard">Whiteboard</span>
         </div>
         <div class="lesson-time">~12–15 min</div>
@@ -834,7 +814,7 @@
         <div class="lesson-icon anim">✦</div>
         <div class="lesson-info">
           <div class="title">Animation: Das Eisbergmodell (1/7 — 6/7)</div>
-          <div class="desc">Was wir sehen (Symptome) vs. was unter der Oberfläche liegt.</div>
+          <div class="desc">Was wir sehen (Symptome) vs. was unter der Oberfläche liegt. SC2/Spike und Impfadjuvantien verstärken ALLE bestehenden chronischen Belastungsfaktoren.</div>
           <span class="tag animation">Vorhandene Animation</span>
         </div>
         <div class="lesson-time">~5–8 min</div>
@@ -844,46 +824,25 @@
         <div class="lesson-icon suggest">&#9670;</div>
         <div class="lesson-info">
           <div class="title">PDF: Mein persönlicher Eisberg — Worksheet</div>
-          <div class="desc">Arbeitsblatt: Sichtbare Symptome oben, vermutete Ursachen unten eintragen. Wertvolles Dokument für Arztgespräche.</div>
+          <div class="desc">Arbeitsblatt: Sichtbare Symptome oben, vermutete Ursachen unten eintragen.</div>
           <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
         </div>
-      </div>
-
-      <div class="lesson">
-        <div class="lesson-icon video">▶</div>
-        <div class="lesson-info">
-          <div class="title">Der Tipping Point — Eine historische Einordnung</div>
-          <div class="desc">Zum ersten Mal in der Medizingeschichte: Was ist bei welchem Verlauf zu erwarten? Warum gibt es keine Spontanheilung?</div>
-          <span class="tag wichtig">Kernkonzept</span>
-          <span class="vtype whiteboard">Whiteboard</span>
-        </div>
-        <div class="lesson-time">~12–15 min</div>
-      </div>
-
-      <div class="lesson">
-        <div class="lesson-icon video">▶</div>
-        <div class="lesson-info">
-          <div class="title">Was bedeutet das für Dauer & Nachhaltigkeit?</div>
-          <div class="desc">Realistische Erwartungshaltung: Warum es keinen schnellen Fix gibt.</div>
-          <span class="vtype talking-head">Talking Head</span>
-        </div>
-        <div class="lesson-time">~8–10 min</div>
       </div>
 
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- MODUL 3 — Einflussfaktoren              -->
+  <!-- MODUL 3 — Cell Danger Response          -->
   <!-- ═══════════════════════════════════════ -->
   <div class="module" onclick="this.classList.toggle('open')">
     <div class="module-header">
-      <div class="module-number" style="background: linear-gradient(135deg, #6b5b3e, #cdaf70);">3</div>
+      <div class="module-number" style="background: linear-gradient(135deg, #8b7340, #cdaf70);">3</div>
       <div class="module-meta">
-        <h3>Die großen Einflussfaktoren</h3>
-        <div class="subtitle">Störfelder, die chronische Erkrankungen aufrechterhalten</div>
+        <h3>Cell Danger Response (CDR) — Das Zentralkonzept</h3>
+        <div class="subtitle">Dr. Robert Naviaux, die 3 Phasen des Heilungszyklus & warum Spike den CDR blockiert</div>
       </div>
-      <div class="module-duration">~60–90 min</div>
+      <div class="module-duration">~60–80 min</div>
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
     </div>
     <div class="lessons">
@@ -891,49 +850,11 @@
       <div class="lesson">
         <div class="lesson-icon video">▶</div>
         <div class="lesson-info">
-          <div class="title">Überblick: Die großen 3 + weitere Einflussfaktoren</div>
-          <div class="desc">Warum es nicht „den einen Auslöser" gibt — und welche Faktoren zusammenspielen.</div>
+          <div class="title">Was ist die Cell Danger Response?</div>
+          <div class="desc">Universelle biologische Reaktion der Zelle auf Bedrohung nach Dr. Robert Naviaux. Zelle schaltet von Energieproduktion auf Verteidigungsmodus.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag wichtig">Zentrales Framework</span>
           <span class="vtype whiteboard">Whiteboard</span>
-        </div>
-        <div class="lesson-time">~5–8 min</div>
-      </div>
-
-      <div class="lesson">
-        <div class="lesson-icon video">▶</div>
-        <div class="lesson-info">
-          <div class="title">Glyphosat, Schwermetalle & Umweltgifte</div>
-          <div class="desc">Wie Umweltgifte die biochemischen Prozesse stören und die Entgiftungskapazität überfordern.</div>
-          <span class="vtype folien">Folien-Vortrag</span>
-        </div>
-        <div class="lesson-time">~10–15 min</div>
-      </div>
-
-      <div class="lesson">
-        <div class="lesson-icon video">▶</div>
-        <div class="lesson-info">
-          <div class="title">Reaktive chronische Infektionen</div>
-          <div class="desc">Welche latenten Infektionen durch die Immunschwäche reaktiviert werden.</div>
-          <span class="vtype folien">Folien-Vortrag</span>
-        </div>
-        <div class="lesson-time">~10–15 min</div>
-      </div>
-
-      <div class="lesson">
-        <div class="lesson-icon video">▶</div>
-        <div class="lesson-info">
-          <div class="title">Die Stressachse — Daueraktivierung des Nervensystems</div>
-          <div class="desc">HPA-Achse, Sympathikus-Dominanz und warum der Körper nicht mehr in den Reparatur-Modus kommt.</div>
-          <span class="vtype whiteboard">Whiteboard</span>
-        </div>
-        <div class="lesson-time">~10–15 min</div>
-      </div>
-
-      <div class="lesson">
-        <div class="lesson-icon video">▶</div>
-        <div class="lesson-info">
-          <div class="title">Zähne, Ernährung, Darm & EMF</div>
-          <div class="desc">Zahnherde, Ernährungsfehler, Darmimmunsystem und elektromagnetische Felder.</div>
-          <span class="vtype folien">Folien-Vortrag</span>
         </div>
         <div class="lesson-time">~12–15 min</div>
       </div>
@@ -941,57 +862,65 @@
       <div class="lesson">
         <div class="lesson-icon video">▶</div>
         <div class="lesson-info">
-          <div class="title">Medikamente & Kopfgelenksinstabilität</div>
-          <div class="desc">Wie bestimmte Medikamente die Problematik verschärfen und warum die Kopfgelenksinstabilität unterschätzt wird.</div>
+          <div class="title">Die 3 Phasen des Heilungszyklus</div>
+          <div class="desc"><strong>CDR1:</strong> Entzündung & Schadensbegrenzung (ATP wird extrazellulär geleitet → eATP als Alarmsignal). <strong>CDR2:</strong> Gewebeaufbau & Zellteilung (Stammzellen, Angiogenese). <strong>CDR3:</strong> Differenzierung & Integration (Mitochondrien nehmen Energieproduktion wieder auf).</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~15–20 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Mitochondrien: Mehr als Kraftwerke</div>
+          <div class="desc">Mitochondrien als Sensoren und Steuerzentren. Warum in CDR1 die Zelle aktiv keine Energieproduktion freigibt — ATP wird extrazellulär als eATP geleitet, intrazelluläres Ca++ strömt ein (pro-entzündlich).</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~10–12 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Warum Krankheit IMMER multikausal ist</div>
+          <div class="desc">Es geht nicht nur um das „Wegmachen" eines Problems. Zellulärer Krankheitszustand = immer mehrere Faktoren. Vor der Pandemie war der Zellzyklus einfacher zu normalisieren — bei Spike gibt es KEINE Spontanheilung.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag wichtig">Kernbotschaft</span>
           <span class="vtype talking-head">Talking Head</span>
         </div>
         <div class="lesson-time">~8–10 min</div>
       </div>
 
-      <div class="lesson vorschlag">
-        <div class="lesson-icon suggest">&#9670;</div>
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
         <div class="lesson-info">
-          <div class="title">PDF: Einflussfaktoren-Check — Persönliche Bestandsaufnahme</div>
-          <div class="desc">Checkliste mit Ampel-System (grün/gelb/rot): Welche Faktoren treffen auf mich zu?</div>
-          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+          <div class="title">CDR2-Lock und maligne Entartung</div>
+          <div class="desc">Patienten stecken in CDR1/CDR2 fest. Je länger der Lock, desto höher das Risiko: Abzweigung in CDR2 → Krebs. Warum der Weg in CDR3 (Heilung) so entscheidend ist.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag wichtig">Schlüssellektion</span>
+          <span class="vtype whiteboard">Whiteboard</span>
         </div>
+        <div class="lesson-time">~10–12 min</div>
       </div>
 
-      <div class="lesson vorschlag">
-        <div class="lesson-icon suggest">&#9670;</div>
-        <div class="lesson-info">
-          <div class="title">PDF: Sauna- & Entgiftungsprotokoll</div>
-          <div class="desc">Schritt-für-Schritt: Angepasstes Saunieren bei Long COVID / Post VAC. Kontraindikationen, Temperatur-Stufen, Binder, Elektrolyte. Differenziert nach Schweregrad.</div>
-          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
-        </div>
-      </div>
-
-      <div class="lesson vorschlag">
-        <div class="lesson-icon suggest">&#9670;</div>
-        <div class="lesson-info">
-          <div class="title">PDF: Anti-Entzündungs-Ernährungs-Guide</div>
-          <div class="desc">Was meiden, was essen, warum. Wochenplan-Vorlage und Einkaufsliste. Fokus: Darmgesundheit & Glyphosat-arme Lebensmittel.</div>
-          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
-        </div>
-      </div>
-
-      <div class="cta-card">
-        <div class="cta-title">Zwischenhinweis: Individuelle Diagnostik in Tübingen</div>
-        <strong>Verkaufspsychologie:</strong> Teilnehmer wissen jetzt, wie viele Faktoren zusammenspielen. Genau hier den Bogen spannen: <em>„Wenn bei dir mehrere dieser Faktoren zusammenkommen — dann kann eine individuelle Diagnostik in unserem Zentrum in Tübingen den entscheidenden Unterschied machen."</em> Logische Konsequenz, kein harter Verkauf.
+      <div class="note-card">
+        <strong>Wichtig:</strong> Heilung bedeutet nicht nur die Bekämpfung des Erregers, sondern das „Abschalten" des Gefahrensignals, damit der Zyklus vollendet werden kann. Es geht darum, ALLE zugrundeliegenden Stressfaktoren aus dem System zu nehmen.
       </div>
 
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- MODUL 4 — Spike & Immunsystem           -->
+  <!-- MODUL 4 — Spike, Infektion & Impfung   -->
   <!-- ═══════════════════════════════════════ -->
   <div class="module" onclick="this.classList.toggle('open')">
     <div class="module-header">
-      <div class="module-number" style="background: linear-gradient(135deg, #5a4a2f, #cdaf70);">4</div>
+      <div class="module-number" style="background: linear-gradient(135deg, #7a6535, #cdaf70);">4</div>
       <div class="module-meta">
         <h3>COVID, Spike-Protein & Immunsystem</h3>
-        <div class="subtitle">Genetik vs. Epigenetik, Spike-Mechanismen & immunologische Szenerie</div>
+        <div class="subtitle">Infektion vs. Transfektion, Spike-Persistenz, Mikrobiom-Befall & Knochenmark</div>
       </div>
       <div class="module-duration">~80–100 min</div>
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
@@ -1001,19 +930,21 @@
       <div class="lesson">
         <div class="lesson-icon video">▶</div>
         <div class="lesson-info">
-          <div class="title">Genetik vs. Epigenetik</div>
-          <div class="desc">Was ist vorgegeben, was wird durch Umwelt aktiviert? Warum manche stärker betroffen sind.</div>
+          <div class="title">Infektion mit SC2 — 3 große Probleme</div>
+          <div class="desc"><strong>1)</strong> Befall JEDER Körperzelle, Einnistung über DMV (Zellbunker), fortlaufende Spike-Bildung. <strong>2)</strong> Befall des Mikrobioms: Bakteriophagen, TLP (Toxin-like Peptides), Schleimhautzerstörung, Leberbelastung. <strong>3)</strong> Befall des hämatopoetischen Systems inkl. Stammzellen.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag wichtig">Schlüssellektion</span>
           <span class="vtype whiteboard">Whiteboard</span>
         </div>
-        <div class="lesson-time">~12–15 min</div>
+        <div class="lesson-time">~15–20 min</div>
       </div>
 
       <div class="lesson">
         <div class="lesson-icon video">▶</div>
         <div class="lesson-info">
-          <div class="title">Infektion vs. Transfektion (Impfung)</div>
-          <div class="desc">Was passiert bei natürlicher Infektion vs. Impfung? Warum Impfung plus Infektion am problematischsten ist.</div>
-          <span class="tag wichtig">Schlüssellektion</span>
+          <div class="title">Transfektion (Impfung) — Lipidnanopartikel & Adjuvantien</div>
+          <div class="desc">Ionisierte Lipidnanopartikel erreichen JEDE Körperzelle → Spike-Produktion. Zusätzlich: Adjuvantien als eigenständige Danger Signals. 154 Mio. Impfdosen allein 2021 in Deutschland.</div>
+          <span class="tag neu">Neuer Inhalt</span>
           <span class="vtype whiteboard">Whiteboard</span>
         </div>
         <div class="lesson-time">~12–15 min</div>
@@ -1023,7 +954,7 @@
         <div class="lesson-icon slide">◼</div>
         <div class="lesson-info">
           <div class="title">Spike-Bildung, Persistenz & Nachbau</div>
-          <div class="desc">Folienserie: Wie entsteht das Spike-Protein, warum persistiert es, warum baut der Körper es nach?</div>
+          <div class="desc">Folienserie: Wie entsteht das Spike-Protein, warum persistiert es, warum baut der Körper es nach? Dauerhafte Replikation als zentrales Problem.</div>
           <span class="tag folie">Mehrere Folien</span>
           <span class="vtype folien">Folien-Vortrag</span>
         </div>
@@ -1033,8 +964,8 @@
       <div class="lesson">
         <div class="lesson-icon video">▶</div>
         <div class="lesson-info">
-          <div class="title">Spike & Cell Danger Response</div>
-          <div class="desc">Wie das Spike-Protein die zelluläre Gefahrenreaktion triggert.</div>
+          <div class="title">Spike & Cell Danger Response — Der Lock</div>
+          <div class="desc">Wie Spike die CDR blockiert, warum Patienten in CDR1/CDR2 feststecken. Einfluss auf Heilungszyklus und Zelldifferenzierung.</div>
           <span class="vtype whiteboard">Whiteboard</span>
         </div>
         <div class="lesson-time">~10–12 min</div>
@@ -1064,7 +995,7 @@
         <div class="lesson-icon suggest">&#9670;</div>
         <div class="lesson-info">
           <div class="title">PDF: Symptom-Zuordnungs-Karte & 4-Wochen-Tracker</div>
-          <div class="desc">Übersichtskarte welche Symptome woher kommen + täglicher Tracker zum Ausfüllen. Zeigt Muster und ist Grundlage für jedes Arztgespräch.</div>
+          <div class="desc">Übersichtskarte welche Symptome woher kommen + täglicher Tracker zum Ausfüllen.</div>
           <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
         </div>
       </div>
@@ -1073,16 +1004,414 @@
   </div>
 
   <!-- ═══════════════════════════════════════ -->
-  <!-- MODUL 5 — Labor & Therapie              -->
+  <!-- MODUL 5 — Genetik & Epigenetik         -->
   <!-- ═══════════════════════════════════════ -->
   <div class="module" onclick="this.classList.toggle('open')">
     <div class="module-header">
-      <div class="module-number" style="background: linear-gradient(135deg, #4a3c25, #cdaf70);">5</div>
+      <div class="module-number" style="background: linear-gradient(135deg, #6b5b3e, #cdaf70);">5</div>
+      <div class="module-meta">
+        <h3>Genetik vs. Epigenetik</h3>
+        <div class="subtitle">Waddington, 4% vs. 96%, die Lichtschalterbatterie & warum wir kein Opfer unserer Gene sind</div>
+      </div>
+      <div class="module-duration">~40–50 min</div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="lessons">
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Einführung Epigenetik: Conrad Waddington</div>
+          <div class="desc">Begründer der modernen Epigenetik (1942). Das „Epigenetische Landschaft"-Modell: Kugel auf dem Hügel — Gene bilden die Landschaft, äußere Einflüsse entscheiden den Pfad.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype folien">Folien-Vortrag</span>
+        </div>
+        <div class="lesson-time">~8–10 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">4% genetisch fixiert — 96% beeinflussbar!</div>
+          <div class="desc">Drei fundamentale Prinzipien: 1) Wir sind kein Opfer unserer Gene. 2) Epigenetische Veränderungen sind vererbbar. 3) Neue Ansätze in Prävention und Therapie — Markierungen sind oft reversibel.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag wichtig">Kernbotschaft</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Die Lichtschalterbatterie — Whiteboard-Erklärung</div>
+          <div class="desc">Benni zeichnet das Beispiel der Lichtschalterbatterie: Welche „Schalter" sind an, welche aus? Wie beeinflusst Lebensstil die Schalterstellung?</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag folie">Whiteboard-Zeichnung</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~10–12 min</div>
+      </div>
+
+      <div class="note-card">
+        <strong>Überleitung:</strong> Jetzt gehen wir die einzelnen Punkte der wichtigsten Krankmacher und damit Gefahrensignale nochmal detaillierter durch, damit ein umfassendes Verständnis erlangt wird, weshalb chronische Belastungen den Organismus aus der Homöostase bringen.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MODUL 6 — Biologische & Chemische       -->
+  <!-- Einflussfaktoren                        -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="module" onclick="this.classList.toggle('open')">
+    <div class="module-header">
+      <div class="module-number" style="background: linear-gradient(135deg, #5a4a2f, #cdaf70);">6</div>
+      <div class="module-meta">
+        <h3>Biologische & Chemische Einflussfaktoren</h3>
+        <div class="subtitle">Infektionen, Erreger-Steckbriefe, Schwermetalle, Umweltgifte, Synergismus & das Fass-Modell</div>
+      </div>
+      <div class="module-duration">~90–120 min</div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="lessons">
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Chronische Infektionen & CDR-Blockade</div>
+          <div class="desc">Persistierende Viren, Bakterien, Parasiten „besetzen" die Zelle dauerhaft. Der zelluläre Lockdown: Zelle drosselt ATP, um Eindringling den Treibstoff zu nehmen. Patienten spüren das als totale Erschöpfung — kein psychisches Problem, sondern Schutzmechanismus.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~10–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Schimmelpilze (Mykotoxine) — Die unsichtbaren Saboteure</div>
+          <div class="desc">Stärkste CDR-Blockierer. Verbrauchen gesamtes Glutathion → Zelle kann nicht mehr entgiften oder reparieren. Über Atemluft direkt ins Gehirn → Mikroglia-Aktivierung → Brain Fog.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype folien">Folien-Vortrag</span>
+        </div>
+        <div class="lesson-time">~8–10 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Dysbiosen & Leaky Gut — LPS-Belastung</div>
+          <div class="desc">Darm wird von Barriere zur dauerhaften Giftquelle. LPS gelangen ins Blut → Immunsystem reagiert wie bei Blutvergiftung. S1-Spike als LPS-Brandbeschleuniger.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag folie">Folie: LPS</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~10–12 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon slide">◼</div>
+        <div class="lesson-info">
+          <div class="title">Folie: LPS-Problematik & S1-Spike-Querverweis</div>
+          <div class="desc">Einbau der vorhandenen LPS-Folie. Benni erläutert den Querverweis auf LPS-Brandbeschleunigung durch S1-Spike.</div>
+          <span class="tag folie">Folie LPS (1).pdf</span>
+          <span class="tag neu">Neuer Inhalt</span>
+        </div>
+        <div class="lesson-time">~3–5 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Erreger-Steckbriefe: Borrelien, Babesien, EBV, Candida, Lamblien</div>
+          <div class="desc">Detaillierte Steckbriefe: Leitsymptom, Clou, CDR-Trigger. Borrelien (Chamäleons, wandernde Schmerzen), Babesien (Sauerstoff-Räuber, Nachtschweiß), EBV (Energie-Vampir), Candida (Zucker-Junkie), Lamblien (Nährstoff-Diebe). Multisystem-Infektions-Syndrom.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype folien">Folien-Vortrag</span>
+        </div>
+        <div class="lesson-time">~20–25 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Warum Antibiosen hier keinen Sinn machen</div>
+          <div class="desc">Benni erklärt, weshalb die „chemische Keule" die CDR oft nur verschlimmert. Ziel: dem Körper wieder Sicherheit signalisieren, Last schrittweise senken.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype talking-head">Talking Head</span>
+        </div>
+        <div class="lesson-time">~8–10 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon slide">◼</div>
+        <div class="lesson-info">
+          <div class="title">Folie: Schaubild E1 — Zeitlicher Verlauf der Problematik</div>
+          <div class="desc">Darstellung der erheblichen Problematik über den zeitlichen Verlauf.</div>
+          <span class="tag folie">Schaubild_E1.pdf</span>
+          <span class="tag neu">Neuer Inhalt</span>
+        </div>
+        <div class="lesson-time">~3–5 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Schwermetalle: Die Identitäts-Diebe (Haptene)</div>
+          <div class="desc">Quecksilber, Blei, Cadmium, Aluminium, Nickel, Gadolinium. Hapten-Effekt: Metalle verändern körpereigene Proteine → Immunsystem erkennt eigenes Gewebe als Feind → Geburtsstunde von Autoimmunität. OTA/OTB als Mitochondrien-Killer.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype folien">Folien-Vortrag</span>
+        </div>
+        <div class="lesson-time">~15–20 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Glyphosat, Weichmacher & Umweltgifte</div>
+          <div class="desc">Glyphosat blockiert Shikimat-Weg der Darmbakterien → tötet „Gute", lässt „Böse" wuchern. Weichmacher als endokrine Disruptoren. Medikamente (Fluorchinolone, NSAIDs) schädigen mitochondriale DNA direkt.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype folien">Folien-Vortrag</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Synergismus & Potenzierung — Warum 1+1 = 100</div>
+          <div class="desc">Das Fass-Modell: Quecksilber + Aluminium (1% → 100% Nervenzellschädigung), Glyphosat als Trojanischer Reiter für Schwermetalle, OTA + LPS = Zytokin-Sturm-Bereitschaft. Die Zelle drückt den Panik-Knopf und lässt nicht mehr los.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag wichtig">Kernkonzept</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Einflussfaktoren-Check — Persönliche Bestandsaufnahme</div>
+          <div class="desc">Checkliste mit Ampel-System (grün/gelb/rot): Welche Faktoren treffen auf mich zu?</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+      <div class="cta-card">
+        <div class="cta-title">Zwischenhinweis: Individuelle Diagnostik in Tübingen</div>
+        <strong>Verkaufspsychologie:</strong> Teilnehmer wissen jetzt, wie viele Faktoren zusammenspielen. <em>„Wenn bei dir mehrere dieser Faktoren zusammenkommen — dann kann eine individuelle Diagnostik in unserem Zentrum den entscheidenden Unterschied machen."</em>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MODUL 7 — Physikalische Stressoren      -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="module" onclick="this.classList.toggle('open')">
+    <div class="module-header">
+      <div class="module-number" style="background: linear-gradient(135deg, #4a3c25, #cdaf70);">7</div>
+      <div class="module-meta">
+        <h3>Physikalische Stressoren & EZ-Wasser</h3>
+        <div class="subtitle">EMF/VGCC, HWS/CCI, Licht/Chronobiologie, EZ-Wasser (H3O2) & die „Zell-Batterie"</div>
+      </div>
+      <div class="module-duration">~70–90 min</div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="lessons">
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Elektrosmog (EMF) — VGCC-Aktivierung & Peroxinitrit-Kaskade</div>
+          <div class="desc">Spannungsgesteuerte Calciumkanäle reagieren millionenfach empfindlicher auf EMF. Einströmendes Calcium → NO + Superoxid = Peroxinitrit → schädigt Mitochondrien-Enzyme. Zelle in CDR1 fixiert.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag wichtig">Schlüssellektion</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">HWS & Cranio-Cervicale Instabilität (CCI)</div>
+          <div class="desc">Mikrobewegung der Wirbel reizt Rückenmark und Hirnstamm. Sympathikus-Peitsche & Vagus-Blockade: Ohne funktionierenden Vagus kann CDR niemals Phase 3 erreichen.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~10–12 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Licht & Chronobiologie — Die mitochondriale Uhr</div>
+          <div class="desc">Infrarot strukturiert EZ-Wasser in Mitochondrien → ATP-Synthese. Blaulicht erzeugt oxidativen Stress. Melatonin als Zell-Müllabfuhr (Autophagie). Beispiel: Neuroinflammation & Glioblastome.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype folien">Folien-Vortrag</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">EZ-Wasser: Die vierte Phase des Wassers (H3O2)</div>
+          <div class="desc">Gel-artige, hochgeordnete Schicht auf biologischen Oberflächen. Negativ geladen → biologische Batterie. Infrarot baut EZ-Wasser auf. EMF zerstört die Struktur. Ohne EZ-Wasser kann CDR3 nicht eintreten.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag wichtig">Kernkonzept</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon slide">◼</div>
+        <div class="lesson-info">
+          <div class="title">Folie: EZ-Wasser — Gefäße, Post Mortem, Infrarot</div>
+          <div class="desc">Benni erklärt Gefäße und EZ-Wasser. Post-mortem-Beispiel: wieder startender Blutfluss bei portalen Patienten durch Infrarotwellen.</div>
+          <span class="tag folie">EZ-Wasser Folie</span>
+          <span class="tag neu">Neuer Inhalt</span>
+        </div>
+        <div class="lesson-time">~5–8 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Praxis: Sonnenlicht, keine Sonnenbrillen & Handyverbot bei Therapie</div>
+          <div class="desc">Warum es unsinnig ist, sich mit SSF50 einzuschmieren oder morgens Sonnenbrille aufzusetzen. Warum bei In-House-Therapie an Geräten KEINE Handys/Laptops erlaubt sind. Was mit einer Blutprobe unter Strahlung passiert.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype talking-head">Talking Head</span>
+        </div>
+        <div class="lesson-time">~8–10 min</div>
+      </div>
+
+      <div class="note-card">
+        <strong>Kernsatz:</strong> „Wir versuchen oft, die Software zu heilen (Nährstoffe/Medikamente), während die physikalische Hardware unter Dauerstrom steht. Solange die physikalische Integrität nicht wiederhergestellt ist, bleibt die Zelle im Notfall-Modus."
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MODUL 8 — Psychosozial, Darm, Metabol.  -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="module" onclick="this.classList.toggle('open')">
+    <div class="module-header">
+      <div class="module-number" style="background: linear-gradient(135deg, #3d3220, #cdaf70);">8</div>
+      <div class="module-meta">
+        <h3>Psychosoziale, Metabolische Faktoren & Darm-Hirn-Achse</h3>
+        <div class="subtitle">Warburg-Effekt, eATP, Trauma auf Zellebene, GBB, Gluten/Zonulin, Histamin & mehr</div>
+      </div>
+      <div class="module-duration">~80–100 min</div>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </div>
+    <div class="lessons">
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Trauma auf Zellebene: Warburg-Effekt & eATP</div>
+          <div class="desc">Mitochondrien schalten bei Trauma auf aerobe Glykolyse (Sicherheit vor Effizienz). eATP bindet an P2X/P2Y-Rezeptoren = „Panik-Knöpfe". Biochemische Erstarrung = biologische Basis für Dissoziation.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag wichtig">Kernkonzept</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Epigenetisches Trauma-Gedächtnis & NO-Zyklus</div>
+          <div class="desc">Trauma hinterlässt Methylierungen an der DNA: Stressrezeptoren dauerhaft „an", Heilungsgene „aus". Selbst nach 20 Jahren agiert der Zellmetabolismus im CDR-Modus. Stickoxid-Teufelskreis blockiert Mitochondrien-Enzyme.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~10–12 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Zytokine, TNF-α & Sickness Behavior</div>
+          <div class="desc">Warum der Körper TNF-α und IL-1β, IL-6 bildet: archaische Schutzmaßnahme. Gefäßdurchlässigkeit, Stoffwechsel-Umleitung, Rückzugsverhalten. Bei chronischem Stress: Zytokine feuern ins Leere → Silent/Sterile Inflammation.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype folien">Folien-Vortrag</span>
+        </div>
+        <div class="lesson-time">~10–12 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Fallbeispiele: Kindheits-Echo, Toxischer Job, Einsamkeits-Falle</div>
+          <div class="desc">Drei konkrete Beispiele: ACEs → Fatigue bei Kritik. Dauerstress → fragmentierte Mitochondrien. Isolierung → CTRA-Gensequenz → Infektanfälligkeit.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype talking-head">Talking Head</span>
+        </div>
+        <div class="lesson-time">~8–10 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Darm-Hirn-Achse (GBB) — Leaky Gut durch Zytokine</div>
+          <div class="desc">TNF-α löst Tight Junctions → LPS gelangen ins Blut → CDR wird zementiert. Chronischer Stress verändert Darm-Milieu: Butyrat-Produzenten sterben ab, Pathogene wachsen. Die zusammenfassende Kette: Trauma → CDR → Zytokine → Leaky Gut → LPS → Dauer-CDR → Fatigue.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag wichtig">Kernkonzept</span>
+          <span class="vtype whiteboard">Whiteboard</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">Gluten, Zonulin & Gluteomorphin-Rezeptoren</div>
+          <div class="desc">Gluten triggert Zonulin-Freisetzung → Darmbarriere öffnet sich aktiv. Gluteomorphin bindet an Opioid-Rezeptoren. CDR-Reaktion kann Tage/Wochen anhalten.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype folien">Folien-Vortrag</span>
+        </div>
+        <div class="lesson-time">~8–10 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">A1-Casein, Industriezucker (AGEs) & Histamin</div>
+          <div class="desc">Casomorphin → Opioid-Rezeptoren → Neuroinflammation. Zucker → AGEs → RAGE-Rezeptoren → Radikalen-Lawine. Histamin → H1/H2-Rezeptoren → Calcium-Kanäle → ultimativer CDR-Befehl. Praxisbeispiel: Histamin + Stress-Synergie.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="vtype folien">Folien-Vortrag</span>
+        </div>
+        <div class="lesson-time">~12–15 min</div>
+      </div>
+
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Anti-Entzündungs-Ernährungs-Guide</div>
+          <div class="desc">Was meiden, was essen, warum. Wochenplan-Vorlage und Einkaufsliste. Fokus: Darmgesundheit & Glyphosat-arme Lebensmittel.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- MODUL 9 — Labor & Therapie              -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="module" onclick="this.classList.toggle('open')">
+    <div class="module-header">
+      <div class="module-number" style="background: linear-gradient(135deg, #332a1a, #cdaf70);">9</div>
       <div class="module-meta">
         <h3>Labordiagnostik & Therapie</h3>
-        <div class="subtitle">Wichtige Laborwerte, Therapieansätze & Einnahmeplan</div>
+        <div class="subtitle">Laborwerte, CDR-Management, HELP Apharese, INUS, IHHT, Mitotrope Therapie & Einnahmeplan</div>
       </div>
-      <div class="module-duration">~60–90 min</div>
+      <div class="module-duration">~80–100 min</div>
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
     </div>
     <div class="lessons">
@@ -1113,7 +1442,7 @@
         <div class="lesson-icon suggest">&#9670;</div>
         <div class="lesson-info">
           <div class="title">PDF: Laborwerte-Referenzkarte zum Mitnehmen</div>
-          <div class="desc">DIN A4 Vorder-/Rückseite: Alle relevanten Werte, Referenzbereiche, kurze Erklärung. Zum Arzt oder Labor mitnehmen.</div>
+          <div class="desc">DIN A4 Vorder-/Rückseite: Alle relevanten Werte, Referenzbereiche, kurze Erklärung.</div>
           <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
         </div>
       </div>
@@ -1121,19 +1450,35 @@
       <div class="lesson">
         <div class="lesson-icon video">▶</div>
         <div class="lesson-info">
-          <div class="title">Welche Laborwerte sind wichtig? — Zusammenfassung</div>
-          <div class="desc">Kompakte Zusammenfassung: Die Must-Have-Werte auf einen Blick.</div>
-          <span class="vtype talking-head">Talking Head</span>
+          <div class="title">Den CDR-Lock aufbrechen: 3-Ebenen-Ansatz</div>
+          <div class="desc"><strong>1) Neurologisch:</strong> Vagus-Reset (Box Breathing, Singen, NUROSYM, Oxytocin). <strong>2) Biochemisch:</strong> Glutathion, NAC, Magnesium, Omega-3, Polyphenole, Phospholipide, Antipurinergika (Ivermectin, DMSO). <strong>3) Metabolisch:</strong> Autophagie (Intervallfasten), Tiefschlaf-Hygiene, Saunabaden.</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag therapie">Therapie</span>
+          <span class="vtype whiteboard">Whiteboard</span>
         </div>
-        <div class="lesson-time">~5–8 min</div>
+        <div class="lesson-time">~15–20 min</div>
       </div>
 
       <div class="lesson">
         <div class="lesson-icon video">▶</div>
         <div class="lesson-info">
-          <div class="title">Therapie: Welche Therapie — wann und wieso?</div>
-          <div class="desc">Systematischer Überblick über Therapiebausteine. Reihenfolge, Priorisierung, Timing.</div>
+          <div class="title">Apparative Therapie: HELP Apharese, INUS & IHHT</div>
+          <div class="desc"><strong>HELP Apharese:</strong> Kardio, Mikrothrombosierung, Clotting, Spike-Elimination. <strong>INUS:</strong> AAK, DAMPs, GPCR, Neurodegeneration, POTS, Myokarditis. <strong>IHHT:</strong> CDR beachten! In CDR1 oft ungünstig. Ab CDR2 mit Flankenschutz (antipurinergisch, antiinflammatorisch). Wichtig für Mitophagie.</div>
+          <span class="tag neu">Neuer Inhalt</span>
           <span class="tag therapie">Therapie</span>
+          <span class="vtype folien">Folien-Vortrag</span>
+        </div>
+        <div class="lesson-time">~15–20 min</div>
+      </div>
+
+      <div class="lesson">
+        <div class="lesson-icon video">▶</div>
+        <div class="lesson-info">
+          <div class="title">CDR1 managen — Der therapeutische Fahrplan</div>
+          <div class="desc">DAMPs und PAMPs runterfahren → Senolyse + Mitophagie (Molecusan, Huaier, KD, IHHT) → Versorgung (Perfusion, Endotheliale Aktivierung, EZ-Water, Membranen) → Mitotrope Therapie (NAD+, Nukleotide, Mitochondrienformula, Phospholipide, Aminosäuren).</div>
+          <span class="tag neu">Neuer Inhalt</span>
+          <span class="tag therapie">Therapie</span>
+          <span class="tag wichtig">Kernkonzept</span>
           <span class="vtype whiteboard">Whiteboard</span>
         </div>
         <div class="lesson-time">~15–20 min</div>
@@ -1154,7 +1499,7 @@
         <div class="lesson-icon suggest">&#9670;</div>
         <div class="lesson-info">
           <div class="title">PDF: Therapie-Fahrplan — Dein 90-Tage-Plan</div>
-          <div class="desc">Strukturierter Fahrplan für die ersten 90 Tage nach Kursabschluss. Woche für Woche: Was starten, beobachten, anpassen.</div>
+          <div class="desc">Strukturierter Fahrplan für die ersten 90 Tage. Woche für Woche: Was starten, beobachten, anpassen.</div>
           <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
         </div>
       </div>
@@ -1164,6 +1509,15 @@
         <div class="lesson-info">
           <div class="title">PDF: Supplement-Qualitäts-Guide</div>
           <div class="desc">Worauf bei Nahrungsergänzungsmitteln achten? Bioverfügbarkeit, Zusatzstoffe, empfohlene Bezugsquellen.</div>
+          <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
+        </div>
+      </div>
+
+      <div class="lesson vorschlag">
+        <div class="lesson-icon suggest">&#9670;</div>
+        <div class="lesson-info">
+          <div class="title">PDF: Sauna- & Entgiftungsprotokoll</div>
+          <div class="desc">Schritt-für-Schritt: Angepasstes Saunieren bei Long COVID / Post VAC. Kontraindikationen, Temperatur-Stufen, Binder, Elektrolyte.</div>
           <span class="tag vorschlag">Vorschlag Schmidtke</span> <span class="tag pdf">PDF Download</span>
         </div>
       </div>
@@ -1196,7 +1550,7 @@
         <div class="lesson-icon suggest">&#9670;</div>
         <div class="lesson-info">
           <div class="title">Was du jetzt weißt — Zusammenfassung</div>
-          <div class="desc">Kompakter Rückblick auf die wichtigsten Erkenntnisse aus allen Modulen. Gibt dem Teilnehmer das Gefühl: „Ich habe jetzt wirklich etwas Wertvolles gelernt und verstanden."</div>
+          <div class="desc">Kompakter Rückblick auf die wichtigsten Erkenntnisse aus allen Modulen.</div>
           <span class="tag vorschlag">Vorschlag Schmidtke</span>
           <span class="vtype folien">Folien-Vortrag</span>
         </div>
@@ -1249,8 +1603,8 @@
   </div>
 
   <div class="footer">
-    <p>Kursstruktur-Entwurf — Börner Lebenswerk × Schmidtke GmbH</p>
-    <p style="margin-top: 4px; font-size: 12px; color: #9ca3af;">Stand: April 2026 · Zeitangaben sind Richtwerte · Orange = Vorschläge Schmidtke</p>
+    <p>Kursstruktur-Entwurf V2 — Börner Lebenswerk × Schmidtke GmbH</p>
+    <p style="margin-top: 4px; font-size: 12px; color: #9ca3af;">Stand: April 2026 · Zeitangaben sind Richtwerte · Orange = Vorschläge Schmidtke · Grün = Neue Inhalte vom Kunden</p>
   </div>
 
 </div>
